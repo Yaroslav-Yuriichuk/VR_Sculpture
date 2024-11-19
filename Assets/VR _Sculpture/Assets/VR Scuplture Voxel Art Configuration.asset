@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9116bb9006454e95bbe3da8cc8188a14, type: 3}
+  m_Name: VR Scuplture Voxel Art Configuration
+  m_EditorClassIdentifier: 
+  <ChunkResolution>k__BackingField:
+    <X>k__BackingField: 44
+    <Y>k__BackingField: 44
+    <Z>k__BackingField: 44
+  <ChunkObjectLayer>k__BackingField:
+    _layer: 11
+  <ChunkObjectMaterial>k__BackingField: {fileID: 2100000, guid: 18891cda15a8bb94e81237016cc14c19,
+    type: 2}
+  <InputSettings>k__BackingField:
+    <Option>k__BackingField: 1
+    <SubtractionMouseButton>k__BackingField: 0
+    <SubtractionMouseButtonPhase>k__BackingField: 0
+    <AdditionMouseButton>k__BackingField: 0
+    <AdditionMouseButtonPhase>k__BackingField: 0
+    <SubtractionAction>k__BackingField: {fileID: 5308124186734806017, guid: 29acbffc7c8e6614c8d99969e4fb9a9f,
+      type: 3}
+    <SubtractionActionButtonPhase>k__BackingField: 1
+    <AdditionAction>k__BackingField: {fileID: -2020411984054765893, guid: 29acbffc7c8e6614c8d99969e4fb9a9f,
+      type: 3}
+    <AdditionActionButtonPhase>k__BackingField: 1
+  <InputActions>k__BackingField:
+  - {fileID: 5308124186734806017, guid: 29acbffc7c8e6614c8d99969e4fb9a9f, type: 3}
+  - {fileID: -2020411984054765893, guid: 29acbffc7c8e6614c8d99969e4fb9a9f, type: 3}
