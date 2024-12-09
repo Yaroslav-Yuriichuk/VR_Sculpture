@@ -28,4 +28,4 @@ NOTE: Project doesn't come with free version of Voxel Art. It still needs to be 
 |-------------|---------|-----------------------------------------------------------------------|
 | Ultimate XR | 0.9.7   | https://github.com/VRMADA/ultimatexr-unity                            |
 | UniTask     | 2.5.10  | https://github.com/Cysharp/UniTask                                    |
-| VoxelArt    | 2.2.0   | https://assetstore.unity.com/packages/tools/modeling/voxel-art-264068 |
+| VoxelArt    | 2.2.1   | https://assetstore.unity.com/packages/tools/modeling/voxel-art-264068 |
