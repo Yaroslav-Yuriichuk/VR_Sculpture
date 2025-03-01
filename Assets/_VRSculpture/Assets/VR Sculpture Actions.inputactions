@@ -1,0 +1,84 @@
+{
+    "name": "VR Sculpture Actions",
+    "maps": [
+        {
+            "name": "Right Hand",
+            "id": "1034fc22-1e71-4221-91de-824009418731",
+            "actions": [
+                {
+                    "name": "Subtract",
+                    "type": "Button",
+                    "id": "efef007d-6fab-42ad-b3e6-3506cf21c6a6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3feb1322-dfd1-4c36-ade3-828abfb81c66",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Subtract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a45965ed-05b5-435e-a3cc-064b3633e768",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Subtract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Left Hand",
+            "id": "bcd89c61-83c4-4737-ab19-6c2372195620",
+            "actions": [
+                {
+                    "name": "Add",
+                    "type": "Button",
+                    "id": "4e0d3e48-3e6d-4b9d-a2af-74a71dea796e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a81ae94f-1d1f-4c7c-bb04-49f829bdd37c",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Add",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62a89004-66f5-44f2-ae8e-586209e9958d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Add",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
