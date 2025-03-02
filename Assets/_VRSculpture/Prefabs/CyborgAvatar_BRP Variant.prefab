@@ -634,6 +634,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1352997799998399627, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877674716935294146, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242291896413744372, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990603474932432039, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516542692453190951, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4684642696867257397, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
       propertyPath: m_Name
@@ -643,6 +668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430683787801742027, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6767188419757356232, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
@@ -699,6 +729,12 @@ PrefabInstance:
       propertyPath: _prefabGuid
       value: 021bb86ca89457549bd554012e2a75de
       objectReference: {fileID: 0}
+    - target: {fileID: 6938008310938690952, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: _parentPrefab
+      value: 
+      objectReference: {fileID: 4684642696867257397, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
     - target: {fileID: 6938008310938690952, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmLength
@@ -1789,10 +1825,20 @@ PrefabInstance:
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._universalToActualAxesRotation.z
       value: 0.7071065
       objectReference: {fileID: 0}
+    - target: {fileID: 8437670542702559344, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8616460180413940873, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
       propertyPath: _targetTypes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079931263337397347, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
