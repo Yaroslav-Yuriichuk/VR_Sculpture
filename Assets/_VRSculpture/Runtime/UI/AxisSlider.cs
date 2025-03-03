@@ -1,4 +1,5 @@
 ﻿using System;
+using _Sculpture.Runtime.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,9 @@ using VoxelArt.Runtime;
 using VoxelArt.Runtime.Modification;
 using VoxelArt.Runtime.Modification.Components;
 
-namespace VR__Sculpture.Runtime
+namespace _VRSculpture.Runtime.UI
 {
-    internal sealed class AxisConfigurator : MonoBehaviour
+    internal sealed class AxisSlider : MonoBehaviourPageElement
     {
         private enum Axis
         {
@@ -27,17 +28,24 @@ namespace VR__Sculpture.Runtime
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Slider _slider;
 
-        private void Start()
+        public override void HandleOpen(IOpenArguments arguments)
         {
+            base.HandleOpen(arguments);
+
             if (TryGetParameter(out float parameter))
             {
                 _text.text = $"{parameter:F2}";
                 _slider.SetValueWithoutNotify(parameter);
             }
+
+            _slider.onValueChanged.AddListener(UpdateParameter);
         }
 
-        private void OnEnable() => _slider.onValueChanged.AddListener(UpdateParameter);
-        private void OnDisable() => _slider.onValueChanged.RemoveListener(UpdateParameter);
+        public override void HandleClose(ICloseArguments arguments)
+        {
+            base.HandleClose(arguments);
+            _slider.onValueChanged.RemoveListener(UpdateParameter);
+        }
 
         private void UpdateParameter(float value)
         {

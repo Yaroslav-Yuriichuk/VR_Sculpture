@@ -1,30 +1,23 @@
 ﻿using System;
+using _Sculpture.Runtime.UI;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using VoxelArt.Runtime;
 using VoxelArt.Runtime.Modification;
 using VoxelArt.Runtime.Modification.Components;
 
-namespace VR__Sculpture.Runtime
+namespace _VRSculpture.Runtime.UI
 {
     [RequireComponent(typeof(TMP_Dropdown))]
-    internal sealed class ShapeDropdown : MonoBehaviour
+    internal sealed class ShapeDropdown : MonoBehaviourPageElement
     {
+        [SerializeField] private TMP_Dropdown _dropdown;
         [SerializeField] private ModificationOperation _operation;
 
-        private TMP_Dropdown _dropdown;
-
-        private void Awake()
+        public override void HandleOpen(IOpenArguments arguments)
         {
-            _dropdown = GetComponent<TMP_Dropdown>();
-        }
+            base.HandleOpen(arguments);
 
-        private void OnEnable() => _dropdown.onValueChanged.AddListener(UpdateOption);
-        private void OnDisable() => _dropdown.onValueChanged.RemoveListener(UpdateOption);
-
-        private void Start()
-        {
             _dropdown.options.Clear();
 
             foreach (ModificationOption modificationOption in Enum.GetValues(typeof(ModificationOption)))
@@ -39,6 +32,14 @@ namespace VR__Sculpture.Runtime
                 _dropdown.SetValueWithoutNotify(index);
                 _dropdown.RefreshShownValue();
             }
+
+            _dropdown.onValueChanged.AddListener(UpdateOption);
+        }
+
+        public override void HandleClose(ICloseArguments arguments)
+        {
+            base.HandleClose(arguments);
+            _dropdown.onValueChanged.RemoveListener(UpdateOption);
         }
 
         private void UpdateOption(int index)

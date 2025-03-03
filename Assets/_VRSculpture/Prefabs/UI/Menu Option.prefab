@@ -296,7 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3136002205137438350}
   - component: {fileID: 9115444729567153718}
-  - component: {fileID: 5144429510515131221}
+  - component: {fileID: 7340240376766773056}
   m_Layer: 5
   m_Name: Menu Option
   m_TagString: Untagged
@@ -372,7 +372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &5144429510515131221
+--- !u!114 &7340240376766773056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,7 +381,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6316481782240918059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f1026bfa6d4053b94856d35e796880, type: 3}
+  m_Script: {fileID: 11500000, guid: 6070b1083144485eb2f0aad703bec515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panel: {fileID: 0}
+  _pageIdentifier:
+    <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPage
+    <EnumAssemblyName>k__BackingField: Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    <EnumValueName>k__BackingField: Subtraction
