@@ -7,33 +7,15 @@ namespace _Sculpture.Runtime.UI
     [Serializable]
     public struct PageLinkData
     {
-        [field: SerializeField] public string EnumTypeName { get; private set; }
-        [field: SerializeField] public string EnumAssemblyName { get; private set; }
-        [field: SerializeField] public string EnumValueName { get; private set; }
-
+        [field: SerializeField] public PageIdentifierData PageIdentifierData { get; private set; }
         [field: SerializeField] public MonoBehaviourPage Page { get; private set; }
 
+        [field: Space]
         [field: SerializeField] public bool OpenOnStart { get; private set; }
         [field: SerializeField] public bool CloseOnDestroy { get; private set; }
-
-        public readonly bool TryGetEnumValue(out Enum value)
-        {
-            value = default;
-
-            try
-			{
-                Type type = Type.GetType($"{EnumTypeName}, {EnumAssemblyName}");
-
-                value = (Enum)Enum.Parse(type!, EnumValueName);
-                return true;
-            }
-            catch (Exception)
-			{
-                return false;
-            }
-        }
     }
 
+    [DefaultExecutionOrder(-1)]
     public abstract class PagesLinker : MonoBehaviour
     {
         [SerializeField] private PageLinkData[] _links;
@@ -44,13 +26,13 @@ namespace _Sculpture.Runtime.UI
         {
             foreach (PageLinkData data in _links)
             {
-                if (!data.TryGetEnumValue(out Enum value))
+                if (!data.PageIdentifierData.TryGetIdentifier(out Enum identifier))
                 {
-                    Debug.LogError($"Failed to retrieve enum value for data with type {data.EnumTypeName} and value {data.EnumValueName}.");
+                    Debug.LogError($"Failed to retrieve enum value for data with type {data.PageIdentifierData.EnumTypeName} and value {data.PageIdentifierData.EnumValueName}.");
                     continue;
                 }
 
-                UIService.Link(data.Page, value);
+                UIService.Link(data.Page, identifier);
             }
         }
 
@@ -58,15 +40,15 @@ namespace _Sculpture.Runtime.UI
         {
             foreach (PageLinkData data in _links)
             {
-                if (!data.TryGetEnumValue(out Enum value))
+                if (!data.PageIdentifierData.TryGetIdentifier(out Enum identifier))
                 {
-                    Debug.LogError($"Failed to retrieve enum value for data with type {data.EnumTypeName} and value {data.EnumValueName}.");
+                    Debug.LogError($"Failed to retrieve enum value for data with type {data.PageIdentifierData.EnumTypeName} and value {data.PageIdentifierData.EnumValueName}.");
                     continue;
                 }
 
                 if (data.OpenOnStart)
                 {
-                    UIService.Open(value);
+                    UIService.Open(identifier);
                 }
             }
         }
@@ -75,18 +57,18 @@ namespace _Sculpture.Runtime.UI
         {
             foreach (PageLinkData data in _links)
             {
-                if (!data.TryGetEnumValue(out Enum value))
+                if (!data.PageIdentifierData.TryGetIdentifier(out Enum identifier))
                 {
-                    Debug.LogError($"Failed to retrieve enum value for data with type {data.EnumTypeName} and value {data.EnumValueName}.");
+                    Debug.LogError($"Failed to retrieve enum value for data with type {data.PageIdentifierData.EnumTypeName} and value {data.PageIdentifierData.EnumValueName}.");
                     continue;
                 }
 
                 if (data.CloseOnDestroy)
                 {
-                    UIService.Close(value);
+                    UIService.Close(identifier);
                 }
 
-                UIService.Unlink(value);
+                UIService.Unlink(identifier);
             }
         }
     }

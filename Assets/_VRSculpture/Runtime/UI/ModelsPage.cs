@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using _Sculpture.Runtime.UI;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using VoxelArt.Runtime;
 using VoxelArt.Runtime.Saving;
 
-namespace VR__Sculpture.Runtime
+namespace _VRSculpture.Runtime.UI
 {
-    internal sealed class ModelsView : MonoBehaviour
+    internal sealed class ModelsPage : BasicPage
     {
+        [Space]
         [SerializeField] private ModelView _viewPrefab;
         [SerializeField] private Transform _viewsParent;
 
@@ -22,14 +24,21 @@ namespace VR__Sculpture.Runtime
 
         private readonly List<ModelView> _views = new();
 
-        private void Start()
+        public override void Open(IOpenArguments arguments)
         {
+            base.Open(arguments);
+
             List<ModelDataJson> models = LoadModels();
             RecreateViews(models);
+
+            _createButton.onClick.AddListener(CreateModel);
         }
 
-        private void OnEnable() => _createButton.onClick.AddListener(CreateModel);
-        private void OnDisable() => _createButton.onClick.RemoveListener(CreateModel);
+        public override void Close(ICloseArguments arguments)
+        {
+            base.Close(arguments);
+            _createButton.onClick.RemoveListener(CreateModel);
+        }
 
         private void CreateModel()
         {
@@ -41,12 +50,12 @@ namespace VR__Sculpture.Runtime
                 Path = Path.Combine(Application.persistentDataPath, $"Model_{models.Count}.voxelart")
             };
 
-            _ = PerformAsync(CreateModelAsync, data, destroyCancellationToken);
+            _ = PerformAsync(CreateModelAsync, data, OpenCancellationToken);
         }
 
-        private void LoadModel(ModelDataJson data) => _ = PerformAsync(LoadModelAsync, data, destroyCancellationToken);
+        private void LoadModel(ModelDataJson data) => _ = PerformAsync(LoadModelAsync, data, OpenCancellationToken);
 
-        private void SaveModel(ModelDataJson data) => _ = PerformAsync(SaveModelAsync, data, destroyCancellationToken);
+        private void SaveModel(ModelDataJson data) => _ = PerformAsync(SaveModelAsync, data, OpenCancellationToken);
 
         private async Task CreateModelAsync(ModelDataJson data, CancellationToken cancellationToken)
         {
@@ -83,7 +92,10 @@ namespace VR__Sculpture.Runtime
                 return;
             }
 
-            await VoxelArtSystems.Build.ApplyModelAsync(modelObject, result.Model, cancellationToken);
+            ModelApplySettings settings = ModelApplySettings.FromModelObjectSettings();
+            settings.ReleasePreviousModel = true;
+
+            await VoxelArtSystems.Build.ApplyModelAsync(modelObject, result.Model, settings, cancellationToken);
         }
 
         private async Task SaveModelAsync(ModelDataJson data, CancellationToken cancellationToken)

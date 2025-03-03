@@ -6,6 +6,7 @@ namespace _Sculpture.Runtime.UI
 {
     public class BasicPage : MonoBehaviourPage
     {
+        [Space]
         [SerializeField] private VisibilityComponent _visibilityComponent;
 
         public override void Open(IOpenArguments arguments)

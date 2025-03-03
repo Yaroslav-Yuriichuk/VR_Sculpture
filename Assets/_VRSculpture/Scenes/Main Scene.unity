@@ -528,7 +528,7 @@ PrefabInstance:
     - target: {fileID: 6733280949729519165, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_Name
-      value: Addition Panel
+      value: Addition Page
       objectReference: {fileID: 0}
     - target: {fileID: 6733280949729519165, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
@@ -586,6 +586,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 87814630}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &87814632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674324364790413675, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
+    type: 3}
+  m_PrefabInstance: {fileID: 87814630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376249461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31056a44961cbf74cbb9d81449004823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &125045605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2312,6 +2324,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Addition Option
       objectReference: {fileID: 0}
+    - target: {fileID: 7340240376766773056, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: _pageIdentifier.<EnumValueName>k__BackingField
+      value: Subtraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340240376766773056, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: _pageIdentifier.<EnumAssemblyName>k__BackingField
+      value: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 8283128468648304752, guid: 008109e8a886cc34db284dba309b2a57,
         type: 3}
       propertyPath: m_text
@@ -2652,6 +2674,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 44046830298794047}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &315466499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674324364790413675, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
+    type: 3}
+  m_PrefabInstance: {fileID: 44046830298794047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315466497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31056a44961cbf74cbb9d81449004823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &323995991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5510,8 +5544,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1278991210}
+  - component: {fileID: 1278991211}
   m_Layer: 5
-  m_Name: Panels
+  m_Name: Pages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5539,6 +5574,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 362, y: 0}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &1278991211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278991209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ead9715191341d28e0e51436b41ce6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _links:
+  - <PageIdentifierData>k__BackingField:
+      <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPage
+      <EnumAssemblyName>k__BackingField: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      <EnumValueName>k__BackingField: Subtraction
+    <Page>k__BackingField: {fileID: 315466499}
+    <OpenOnStart>k__BackingField: 0
+    <CloseOnDestroy>k__BackingField: 0
+  - <PageIdentifierData>k__BackingField:
+      <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPage
+      <EnumAssemblyName>k__BackingField: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      <EnumValueName>k__BackingField: Addition
+    <Page>k__BackingField: {fileID: 87814632}
+    <OpenOnStart>k__BackingField: 0
+    <CloseOnDestroy>k__BackingField: 0
+  - <PageIdentifierData>k__BackingField:
+      <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPage
+      <EnumAssemblyName>k__BackingField: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      <EnumValueName>k__BackingField: Models
+    <Page>k__BackingField: {fileID: 5327262501600702543}
+    <OpenOnStart>k__BackingField: 0
+    <CloseOnDestroy>k__BackingField: 0
 --- !u!1001 &1285077349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5623,6 +5695,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1285077349}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1316612948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316612950}
+  - component: {fileID: 1316612949}
+  m_Layer: 0
+  m_Name: Scene Scope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1316612949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316612948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34342e845014ac1853ed06e02e59a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects:
+  - {fileID: 1332601530}
+--- !u!4 &1316612950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316612948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332601530
 GameObject:
   m_ObjectHideFlags: 0
@@ -8217,10 +8338,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Models Option
       objectReference: {fileID: 0}
+    - target: {fileID: 7340240376766773056, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: _pageIdentifier.<EnumValueName>k__BackingField
+      value: Subtraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340240376766773056, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: _pageIdentifier.<EnumAssemblyName>k__BackingField
+      value: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 8283128468648304752, guid: 008109e8a886cc34db284dba309b2a57,
         type: 3}
       propertyPath: m_text
       value: Models
+      objectReference: {fileID: 0}
+    - target: {fileID: 9115444729567153718, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9115444729567153718, guid: 008109e8a886cc34db284dba309b2a57,
         type: 3}
@@ -8432,22 +8568,22 @@ PrefabInstance:
     - target: {fileID: 70450854242408986, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 70450854242408986, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123637047344724838, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 123637047344724838, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1014912402270216318, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
@@ -8552,137 +8688,142 @@ PrefabInstance:
     - target: {fileID: 3178109864008728817, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3178109864008728817, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3178109864008728817, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3267255451755307405, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3267255451755307405, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3267255451755307405, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3610797279982235438, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3610797279982235438, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697830700527586898, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 3697830700527586898, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5681480991174102412, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 5681480991174102412, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5734728625130024176, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 5734728625130024176, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5827207358119371347, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 5827207358119371347, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5827207358119371347, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 5878063546764215087, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 5878063546764215087, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5878063546764215087, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 6733280949729519165, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_Name
-      value: Subtraction Panel
+      value: Subtraction Page
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733280949729519165, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7077420440553723751, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 7077420440553723751, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7077420440553723751, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 7166768472930235931, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     - target: {fileID: 7166768472930235931, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7166768472930235931, guid: 8d9fbbe1fc4827a4192c7d15aabe152f,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8181819
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8768,7 +8909,7 @@ GameObject:
   - component: {fileID: 1912595183436248589}
   - component: {fileID: 5327262501600702543}
   m_Layer: 5
-  m_Name: Models Panel
+  m_Name: Models Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8786,6 +8927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a246fc72af764c0ebbbf38d20a3cd9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _elements: []
+  _visibilityComponent: {fileID: 0}
   _viewPrefab: {fileID: 134858122325537879, guid: 969c045075cc6ad4980f6b8ff23039b1,
     type: 3}
   _viewsParent: {fileID: 1465953547}
@@ -9050,6 +9193,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Subtraction Option
       objectReference: {fileID: 0}
+    - target: {fileID: 7340240376766773056, guid: 008109e8a886cc34db284dba309b2a57,
+        type: 3}
+      propertyPath: _pageIdentifier.<EnumAssemblyName>k__BackingField
+      value: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 9115444729567153718, guid: 008109e8a886cc34db284dba309b2a57,
         type: 3}
       propertyPath: m_IsOn
@@ -9076,3 +9224,4 @@ SceneRoots:
   - {fileID: 1417308046}
   - {fileID: 50368687}
   - {fileID: 6707261489805971596}
+  - {fileID: 1316612950}

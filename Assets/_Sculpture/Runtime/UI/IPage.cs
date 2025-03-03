@@ -6,6 +6,11 @@ namespace _Sculpture.Runtime.UI
     public interface IPage
     {
         /// <summary>
+        /// Gets a value indicating whether the page is open.
+        /// </summary>
+        bool IsOpen { get; }
+
+        /// <summary>
         /// Opens the page with the specified arguments.
         /// </summary>
         /// <param name="arguments">The arguments used to open the page.</param>

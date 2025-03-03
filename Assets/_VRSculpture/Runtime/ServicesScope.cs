@@ -1,8 +1,9 @@
 ﻿using _Sculpture.Runtime.Auth.Services;
+using _Sculpture.Runtime.UI;
 using VContainer;
 using VContainer.Unity;
 
-namespace VR__Sculpture.Runtime
+namespace _VRSculpture.Runtime
 {
     internal sealed class ServicesScope : LifetimeScope
     {
@@ -10,6 +11,7 @@ namespace VR__Sculpture.Runtime
         {
             base.Configure(builder);
 
+            builder.Register<IUIService, UIService>(Lifetime.Singleton);
             builder.Register<IAuthService, FireBaseAuthService>(Lifetime.Singleton);
         }
     }
