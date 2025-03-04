@@ -30,7 +30,18 @@
                 {
                     "name": "",
                     "id": "a45965ed-05b5-435e-a3cc-064b3633e768",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Subtract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e5b4d31-e9cf-4e10-a3cd-fed5c50b0823",
+                    "path": "<Mouse>/forwardButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -69,7 +80,18 @@
                 {
                     "name": "",
                     "id": "62a89004-66f5-44f2-ae8e-586209e9958d",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/#(Q)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Add",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a31b2fcd-80f4-4cea-b523-9d85876c5595",
+                    "path": "<Mouse>/backButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
