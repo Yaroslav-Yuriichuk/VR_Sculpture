@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _VRSculpture.Runtime
+namespace _VRSculpture.Runtime.UI
 {
     public sealed class ModelDataJson
     {

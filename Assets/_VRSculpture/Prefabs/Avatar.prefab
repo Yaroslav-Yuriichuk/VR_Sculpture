@@ -1851,7 +1851,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 4299523684060661211}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4684642696867257397, guid: d12ff67997e4a1547890dc7efeb1b11c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7930912993918695521}
   m_SourcePrefab: {fileID: 100100000, guid: d12ff67997e4a1547890dc7efeb1b11c, type: 3}
 --- !u!4 &3235780647008657639 stripped
 Transform:
@@ -1865,3 +1869,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1053697215498056530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5736545505965698919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4684642696867257397, guid: d12ff67997e4a1547890dc7efeb1b11c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1053697215498056530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7930912993918695521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736545505965698919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39ac39d1301412cbb6f6191ca6fb9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraElevateHeight: 1.75
+  _moveSpeed: {x: 2, y: 2}
+  _headRotationSpeed: {x: 0.1, y: 0.1}
+  _headVerticalAngleLimit: {x: -70, y: 70}
+  _leftHandCameraOffset: {x: -0.2, y: -0.18, z: 0.47}
+  _rightHandCameraOffset: {x: 0.2, y: -0.18, z: 0.47}
+  _leftHandLocalRotation: {x: 0, y: 0, z: 0}
+  _rightHandLocalRotation: {x: 0, y: 0, z: 0}
+  _moveAction: {fileID: -5397333713765654221, guid: 97077793c07a213409d97fad52d114b8,
+    type: 3}
+  _rotateHeadAction: {fileID: 4393991226982548978, guid: 97077793c07a213409d97fad52d114b8,
+    type: 3}
+  _lockAction: {fileID: -6511016912758168904, guid: 97077793c07a213409d97fad52d114b8,
+    type: 3}
