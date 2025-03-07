@@ -15,7 +15,7 @@ namespace _Sculpture.Runtime.Auth.Services
         /// <param name="password">The password of the user to register.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the registration operation.</returns>
-        UniTask<RegistrationResult> RegisterAsync(string email, string password, CancellationToken cancellationToken = default);
+        UniTask<SignUpResult> SignUpAsync(string email, string password, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Logs in a user with the specified email and password.
@@ -24,7 +24,7 @@ namespace _Sculpture.Runtime.Auth.Services
         /// <param name="password">The password of the user to log in.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the login operation.</returns>
-        UniTask<LoginResult> LoginAsync(string email, string password, CancellationToken cancellationToken = default);
+        UniTask<SignInResult> SignInAsync(string email, string password, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Logs out the current user.

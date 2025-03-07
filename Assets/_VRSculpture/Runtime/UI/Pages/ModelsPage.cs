@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using VoxelArt.Runtime;
 using VoxelArt.Runtime.Saving;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages
 {
     internal sealed class ModelsPage : BasicPage
     {

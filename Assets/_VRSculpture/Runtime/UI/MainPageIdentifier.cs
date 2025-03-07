@@ -2,11 +2,11 @@
 
 namespace _VRSculpture.Runtime.UI
 {
-    [PageIdentifiers]
-    internal enum MainPage
+    [PageIdentifier]
+    internal enum MainPageIdentifier
     {
-        Login,
-        Registration,
+        SignUp,
+        SignIn,
         Subtraction,
         Addition,
         Models,

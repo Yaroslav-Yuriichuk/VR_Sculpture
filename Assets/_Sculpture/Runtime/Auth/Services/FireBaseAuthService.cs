@@ -9,7 +9,7 @@ namespace _Sculpture.Runtime.Auth.Services
     {
         private FirebaseAuth Auth => FirebaseAuth.DefaultInstance;
 
-        public async UniTask<RegistrationResult> RegisterAsync(string email, string password, CancellationToken cancellationToken = default)
+        public async UniTask<SignUpResult> SignUpAsync(string email, string password, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -19,11 +19,11 @@ namespace _Sculpture.Runtime.Auth.Services
 
                 if (Auth.CurrentUser == null)
                 {
-                    return new RegistrationResult(false, error: RegistrationError.Unknown);
+                    return new SignUpResult(false, error: SignUpError.Unknown);
                 }
 
                 User user = new User(Auth.CurrentUser.UserId, Auth.CurrentUser.Email, password);
-                RegistrationResult result = new RegistrationResult(true, user);
+                SignUpResult result = new SignUpResult(true, user);
 
                 return result;
             }
@@ -34,22 +34,22 @@ namespace _Sculpture.Runtime.Auth.Services
                 switch (error)
                 {
                     case AuthError.EmailAlreadyInUse:
-                        return new RegistrationResult(false, error: RegistrationError.EmailAlreadyInUse);
+                        return new SignUpResult(false, error: SignUpError.EmailAlreadyInUse);
                     case AuthError.InvalidEmail:
-                        return new RegistrationResult(false, error: RegistrationError.InvalidEmail);
+                        return new SignUpResult(false, error: SignUpError.InvalidEmail);
                     case AuthError.WeakPassword:
-                        return new RegistrationResult(false, error: RegistrationError.WeakPassword);
+                        return new SignUpResult(false, error: SignUpError.WeakPassword);
                     case AuthError.MissingEmail:
-                        return new RegistrationResult(false, error: RegistrationError.MissingEmail);
+                        return new SignUpResult(false, error: SignUpError.MissingEmail);
                     case AuthError.MissingPassword:
-                        return new RegistrationResult(false, error: RegistrationError.MissingPassword);
+                        return new SignUpResult(false, error: SignUpError.MissingPassword);
                     default:
-                        return new RegistrationResult(false, error: RegistrationError.Unknown);
+                        return new SignUpResult(false, error: SignUpError.Unknown);
                 }
             }
         }
 
-        public async UniTask<LoginResult> LoginAsync(string email, string password, CancellationToken cancellationToken = default)
+        public async UniTask<SignInResult> SignInAsync(string email, string password, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -59,11 +59,11 @@ namespace _Sculpture.Runtime.Auth.Services
 
                 if (Auth.CurrentUser == null)
                 {
-                    return new LoginResult(false, error: LoginError.Unknown);
+                    return new SignInResult(false, error: SignInError.Unknown);
                 }
 
                 User user = new User(Auth.CurrentUser.UserId, Auth.CurrentUser.Email, password);
-                LoginResult result = new LoginResult(true, user);
+                SignInResult result = new SignInResult(true, user);
 
                 return result;
             }
@@ -74,11 +74,11 @@ namespace _Sculpture.Runtime.Auth.Services
                 switch (error)
                 {
                     case AuthError.WrongPassword:
-                        return new LoginResult(false, error: LoginError.WrongPassword);
+                        return new SignInResult(false, error: SignInError.WrongPassword);
                     case AuthError.UserNotFound:
-                        return new LoginResult(false, error: LoginError.UserNotFound);
+                        return new SignInResult(false, error: SignInError.UserNotFound);
                     default:
-                        return new LoginResult(false, error: LoginError.Unknown);
+                        return new SignInResult(false, error: SignInError.Unknown);
                 }
             }
         }

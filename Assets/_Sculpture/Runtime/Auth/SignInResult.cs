@@ -1,14 +1,14 @@
 ﻿namespace _Sculpture.Runtime.Auth
 {
-    public sealed class LoginResult
+    public sealed class SignInResult
     {
         public bool IsSuccessful { get; }
 
         public User User { get; }
 
-        public LoginError Error { get; }
+        public SignInError Error { get; }
 
-        public LoginResult(bool isSuccessful, User user = null, LoginError error = LoginError.None)
+        public SignInResult(bool isSuccessful, User user = null, SignInError error = SignInError.None)
         {
             IsSuccessful = isSuccessful;
             User = user;

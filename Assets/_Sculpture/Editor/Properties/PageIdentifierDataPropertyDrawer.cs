@@ -20,7 +20,7 @@ namespace _Sculpture.Editor.Properties
 
             position.height = EditorGUIUtility.singleLineHeight;
 
-            TypeCache.TypeCollection pageIdentifiers = TypeCache.GetTypesWithAttribute<PageIdentifiersAttribute>();
+            TypeCache.TypeCollection pageIdentifiers = TypeCache.GetTypesWithAttribute<PageIdentifierAttribute>();
 
             if (pageIdentifiers.Count == 0)
             {

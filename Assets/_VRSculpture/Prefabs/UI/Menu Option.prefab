@@ -322,7 +322,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 50}
+  m_SizeDelta: {x: 130, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9115444729567153718
 MonoBehaviour:
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pageIdentifier:
-    <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPage
-    <EnumAssemblyName>k__BackingField: Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.MainPageIdentifier
+    <EnumAssemblyName>k__BackingField: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-    <EnumValueName>k__BackingField: Subtraction
+    <EnumValueName>k__BackingField: SignUp

@@ -86,41 +86,59 @@ namespace _VRSculpture.Runtime.Emulator
                     avatarRotationEuler.y += headRotationDelta.x * _headRotationSpeed.x;
                     _avatar.transform.rotation = Quaternion.Euler(avatarRotationEuler);
 
+                    Vector2 movementDelta = _moveAction.action.ReadValue<Vector2>().normalized;
+                    Vector3 cameraDirection = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
+
+                    Vector3 forwardMovement = movementDelta.y * _moveSpeed.y * Time.deltaTime * cameraDirection;
+                    Vector3 sideMovement = movementDelta.x * _moveSpeed.x * Time.deltaTime * new Vector3(cameraDirection.z, 0, -cameraDirection.x);
+
+                    Vector3 movement = forwardMovement + sideMovement;
+                    _avatar.transform.position += movement;
+
+                    Quaternion headRotation = _cameraTransform.rotation;
+                    Quaternion inverseAvatarRotation = Quaternion.Inverse(headRotation);
+
+                    _cameraTransform.localPosition = new Vector3(0, _cameraElevateHeight, 0);
+
+                    Vector3 cameraPositionLS = inverseAvatarRotation * _cameraTransform.position;
+                    Vector3 leftHandPositionLS = cameraPositionLS + _leftHandCameraOffset;
+                    Vector3 rightHandPositionLS = cameraPositionLS + _rightHandCameraOffset;
+
+                    Vector3 leftHandPosition = headRotation * leftHandPositionLS;
+                    Vector3 rightHandPosition = headRotation * rightHandPositionLS;
+
+                    _leftHandTransform.position = leftHandPosition;
+                    _rightHandTransform.position = rightHandPosition;
+
+                    _leftHandTransform.localRotation = Quaternion.Euler(_leftHandLocalRotation);
+                    _rightHandTransform.localRotation = Quaternion.Euler(_rightHandLocalRotation);
+
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
                 }
                 else
                 {
+                    Quaternion headRotation = _cameraTransform.rotation;
+                    Quaternion inverseAvatarRotation = Quaternion.Inverse(headRotation);
+
+                    _cameraTransform.localPosition = new Vector3(0, _cameraElevateHeight, 0);
+
+                    Vector3 cameraPositionLS = inverseAvatarRotation * _cameraTransform.position;
+                    Vector3 leftHandPositionLS = cameraPositionLS + _leftHandCameraOffset;
+                    Vector3 rightHandPositionLS = cameraPositionLS + _rightHandCameraOffset;
+
+                    Vector3 leftHandPosition = headRotation * leftHandPositionLS;
+                    Vector3 rightHandPosition = headRotation * rightHandPositionLS;
+
+                    _leftHandTransform.position = leftHandPosition;
+                    _rightHandTransform.position = rightHandPosition;
+
+                    _leftHandTransform.localRotation = Quaternion.Euler(_leftHandLocalRotation);
+                    _rightHandTransform.localRotation = Quaternion.Euler(_rightHandLocalRotation);
+
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                 }
-
-                Vector2 movementDelta = _moveAction.action.ReadValue<Vector2>().normalized;
-                Vector3 cameraDirection = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
-
-                Vector3 forwardMovement = movementDelta.y * _moveSpeed.y * Time.deltaTime * cameraDirection;
-                Vector3 sideMovement = movementDelta.x * _moveSpeed.x * Time.deltaTime * new Vector3(cameraDirection.z, 0, -cameraDirection.x);
-
-                Vector3 movement = forwardMovement + sideMovement;
-                _avatar.transform.position += movement;
-
-                Quaternion headRotation = _cameraTransform.rotation;
-                Quaternion inverseAvatarRotation = Quaternion.Inverse(headRotation);
-
-                _cameraTransform.localPosition = new Vector3(0, _cameraElevateHeight, 0);
-
-                Vector3 cameraPositionLS = inverseAvatarRotation * _cameraTransform.position;
-                Vector3 leftHandPositionLS = cameraPositionLS + _leftHandCameraOffset;
-                Vector3 rightHandPositionLS = cameraPositionLS + _rightHandCameraOffset;
-
-                Vector3 leftHandPosition = headRotation * leftHandPositionLS;
-                Vector3 rightHandPosition = headRotation * rightHandPositionLS;
-
-                _leftHandTransform.position = leftHandPosition;
-                _rightHandTransform.position = rightHandPosition;
-
-                _leftHandTransform.localRotation = Quaternion.Euler(_leftHandLocalRotation);
-                _rightHandTransform.localRotation = Quaternion.Euler(_rightHandLocalRotation);
             }
         }
     }
