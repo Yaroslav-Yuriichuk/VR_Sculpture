@@ -135,6 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7630774327702619897, guid: 0b165d188eb9ffd47aad7b7b599bb280, type: 3}
+    - {fileID: 7092973193231627844, guid: 0b165d188eb9ffd47aad7b7b599bb280, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -142,30 +143,31 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5562933122077340934}
-    - targetCorrespondingSourceObject: {fileID: 3257465983358451733, guid: 0b165d188eb9ffd47aad7b7b599bb280,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4237948160471712002}
   m_SourcePrefab: {fileID: 100100000, guid: 0b165d188eb9ffd47aad7b7b599bb280, type: 3}
---- !u!1 &3057692016477868161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3257465983358451733, guid: 0b165d188eb9ffd47aad7b7b599bb280,
+--- !u!114 &1757242974779645197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2249892783789919641, guid: 0b165d188eb9ffd47aad7b7b599bb280,
     type: 3}
   m_PrefabInstance: {fileID: 530231501896929428}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4237948160471712002
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2553146474542445783 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2609092219707941955, guid: 0b165d188eb9ffd47aad7b7b599bb280,
+    type: 3}
+  m_PrefabInstance: {fileID: 530231501896929428}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3057692016477868161}
+  m_GameObject: {fileID: 3954491825779847243}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049e6eeb00db4726b6243ab8d9db2ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 3057692016477868161}
 --- !u!1 &3954491825779847243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3583440202124943583, guid: 0b165d188eb9ffd47aad7b7b599bb280,
@@ -184,5 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989943b81c7c4a90b19569ae810ea3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visibilityComponent: {fileID: 4237948160471712002}
+  _visibilityComponent: {fileID: 2553146474542445783}
+  _closeButton: {fileID: 1757242974779645197}
   <Error>k__BackingField: 0

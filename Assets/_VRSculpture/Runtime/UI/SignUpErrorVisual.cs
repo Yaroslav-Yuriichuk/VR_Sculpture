@@ -1,23 +1,11 @@
 ﻿using _Sculpture.Runtime.Auth;
-using _Sculpture.Runtime.UI.Visual;
 using UnityEngine;
 
 namespace _VRSculpture.Runtime.UI
 {
-    internal sealed class SignUpErrorVisual : VisibilityComponent
+    internal sealed class SignUpErrorVisual : AuthResultVisual
     {
-        [SerializeField] private VisibilityComponent _visibilityComponent;
-
+        [field: Space]
         [field: SerializeField] public SignUpError Error { get; private set; }
-
-        public override void Show(bool immediately = false)
-        {
-            _visibilityComponent.Show(immediately);
-        }
-
-        public override void Hide(bool immediately = false)
-        {
-            _visibilityComponent.Hide(immediately);
-        }
     }
 }

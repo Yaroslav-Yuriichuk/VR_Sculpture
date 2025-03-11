@@ -40,9 +40,8 @@ namespace _Sculpture.Runtime.UI
         }
     }
 
-    public class BasicPage<TOpenArguments, TCloseArguments> : BasicPage
+    public class BasicPage<TOpenArguments> : BasicPage
         where TOpenArguments : IOpenArguments
-        where TCloseArguments : ICloseArguments
     {
         public sealed override void Open(IOpenArguments arguments)
         {
@@ -50,7 +49,7 @@ namespace _Sculpture.Runtime.UI
 
             if (arguments is null)
             {
-                throw new ArgumentNullException(nameof(arguments), $"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TCloseArguments>)} cannot be null.");
+                throw new ArgumentNullException(nameof(arguments), $"Open arguments provided to page {nameof(BasicPage<TOpenArguments>)} cannot be null.");
             }
 
             TOpenArguments openArguments;
@@ -61,10 +60,118 @@ namespace _Sculpture.Runtime.UI
             }
             catch (Exception)
             {
-                throw new ArgumentException($"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TCloseArguments>)} must cast to {nameof(TOpenArguments)}.");
+                throw new ArgumentException($"Open arguments provided to page {nameof(BasicPage<TOpenArguments>)} must cast to {nameof(TOpenArguments)}.");
             }
 
             Open(openArguments);
+        }
+
+        protected virtual void Open(TOpenArguments arguments) { }
+    }
+
+    public class BasicPage<TOpenArguments, TReloadArguments> : BasicPage
+        where TOpenArguments : IOpenArguments
+        where TReloadArguments : IReloadArguments
+    {
+        public sealed override void Open(IOpenArguments arguments)
+        {
+            base.Open(arguments);
+
+            if (arguments is null)
+            {
+                throw new ArgumentNullException(nameof(arguments), $"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} cannot be null.");
+            }
+
+            TOpenArguments openArguments;
+
+            try
+            {
+                openArguments = (TOpenArguments)arguments;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} must cast to {nameof(TOpenArguments)}.");
+            }
+
+            Open(openArguments);
+        }
+
+        public sealed override void Reload(IReloadArguments arguments)
+        {
+            base.Reload(arguments);
+
+            if (arguments is null)
+            {
+                throw new ArgumentNullException(nameof(arguments), $"Reload arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} cannot be null.");
+            }
+
+            TReloadArguments reloadArguments;
+
+            try
+            {
+                reloadArguments = (TReloadArguments)arguments;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"Reload arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} must cast to {nameof(TReloadArguments)}.");
+            }
+
+            Reload(reloadArguments);
+        }
+
+        protected virtual void Open(TOpenArguments arguments) { }
+        protected virtual void Reload(TReloadArguments arguments) { }
+    }
+
+    public class BasicPage<TOpenArguments, TReloadArguments, TCloseArguments> : BasicPage
+        where TOpenArguments : IOpenArguments
+        where TReloadArguments : IReloadArguments
+        where TCloseArguments : ICloseArguments
+    {
+        public sealed override void Open(IOpenArguments arguments)
+        {
+            base.Open(arguments);
+
+            if (arguments is null)
+            {
+                throw new ArgumentNullException(nameof(arguments), $"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments, TCloseArguments>)} cannot be null.");
+            }
+
+            TOpenArguments openArguments;
+
+            try
+            {
+                openArguments = (TOpenArguments)arguments;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"Open arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments, TCloseArguments>)} must cast to {nameof(TOpenArguments)}.");
+            }
+
+            Open(openArguments);
+        }
+
+        public sealed override void Reload(IReloadArguments arguments)
+        {
+            base.Reload(arguments);
+
+            if (arguments is null)
+            {
+                throw new ArgumentNullException(nameof(arguments), $"Reload arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} cannot be null.");
+            }
+
+            TReloadArguments reloadArguments;
+
+            try
+            {
+                reloadArguments = (TReloadArguments)arguments;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"Reload arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments>)} must cast to {nameof(TReloadArguments)}.");
+            }
+
+            Reload(reloadArguments);
         }
 
         public sealed override void Close(ICloseArguments arguments)
@@ -73,7 +180,7 @@ namespace _Sculpture.Runtime.UI
 
             if (arguments is null)
             {
-                throw new ArgumentNullException(nameof(arguments), $"Close arguments provided to page {nameof(BasicPage<TOpenArguments, TCloseArguments>)} cannot be null.");
+                throw new ArgumentNullException(nameof(arguments), $"Close arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments, TCloseArguments>)} cannot be null.");
             }
 
             TCloseArguments closeArguments;
@@ -84,13 +191,14 @@ namespace _Sculpture.Runtime.UI
             }
             catch (Exception)
             {
-                throw new ArgumentException($"Close arguments provided to page {nameof(BasicPage<TOpenArguments, TCloseArguments>)} must cast to {nameof(TCloseArguments)}.");
+                throw new ArgumentException($"Close arguments provided to page {nameof(BasicPage<TOpenArguments, TReloadArguments, TCloseArguments>)} must cast to {nameof(TCloseArguments)}.");
             }
 
             Close(closeArguments);
         }
 
         protected virtual void Open(TOpenArguments arguments) { }
+        protected virtual void Reload(TReloadArguments arguments) { }
         protected virtual void Close(TCloseArguments arguments) { }
     }
 }

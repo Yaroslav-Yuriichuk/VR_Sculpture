@@ -49,13 +49,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d83bde4352549b8be1bbab8a0dc96cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elements: []
+  _elements:
+  - {fileID: 7634770298455560182}
+  - {fileID: 7256711869147438270}
+  - {fileID: 2954135124878324248}
+  - {fileID: 8061979655109984896}
+  - {fileID: 4090669623554216709}
+  - {fileID: 8178223402096140403}
+  - {fileID: 4943990261149665947}
+  - {fileID: 4760519710548263225}
   _visibilityComponent: {fileID: 0}
-  _emailInputField: {fileID: 7072395236687747899}
-  _passwordInputField: {fileID: 7452224456303889931}
+  _emailPasswordForm: {fileID: 7634770298455560182}
   _signUpButton: {fileID: 729485193249978357}
   _canvasGroup: {fileID: 2434793305208684539}
-  _successVisual: {fileID: 8016334378008718339}
+  _successVisual: {fileID: 7256711869147438270}
   _errorVisuals:
   - {fileID: 2954135124878324248}
   - {fileID: 8061979655109984896}
@@ -1231,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
@@ -1241,7 +1248,7 @@ PrefabInstance:
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
@@ -1251,7 +1258,7 @@ PrefabInstance:
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
@@ -1306,7 +1313,7 @@ PrefabInstance:
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2407400744448253533, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
         type: 3}
@@ -1404,40 +1411,28 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7664114875184870872}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7072395236687747899 stripped
+--- !u!114 &7256711869147438270 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 610895396190711523, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
+  m_CorrespondingSourceObject: {fileID: 1074498975744829798, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
     type: 3}
   m_PrefabInstance: {fileID: 7664114875184870872}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Script: {fileID: 11500000, guid: b9ac65a5afef4b16856f12f5f322cf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7452224456303889931 stripped
+--- !u!114 &7634770298455560182 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 952504138885151699, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
+  m_CorrespondingSourceObject: {fileID: 263532037062523438, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
     type: 3}
   m_PrefabInstance: {fileID: 7664114875184870872}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8016334378008718339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 388394217197033947, guid: 93d25b5dd4ad2a241b5d2c592a8bb492,
-    type: 3}
-  m_PrefabInstance: {fileID: 7664114875184870872}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 049e6eeb00db4726b6243ab8d9db2ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb1524763c340978a1d43f4260036ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8061979655109984896 stripped

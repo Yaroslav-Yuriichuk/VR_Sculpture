@@ -17,6 +17,12 @@ namespace _Sculpture.Runtime.UI
         void Open(IOpenArguments arguments);
 
         /// <summary>
+        /// Reloads the page with the specified arguments.
+        /// </summary>
+        /// <param name="arguments">The arguments used to reload the page.</param>
+        void Reload(IReloadArguments arguments);
+
+        /// <summary>
         /// Closes the page with the specified arguments.
         /// </summary>
         /// <param name="arguments">The arguments used to close the page.</param>

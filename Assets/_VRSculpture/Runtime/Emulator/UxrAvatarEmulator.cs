@@ -27,6 +27,7 @@ namespace _VRSculpture.Runtime.Emulator
         [SerializeField] private InputActionReference _rotateHeadAction;
         [SerializeField] private InputActionReference _lockAction;
 
+#if UNITY_EDITOR
         private UxrAvatar _avatar;
 
         private Transform _cameraTransform;
@@ -141,5 +142,6 @@ namespace _VRSculpture.Runtime.Emulator
                 }
             }
         }
+#endif
     }
 }
