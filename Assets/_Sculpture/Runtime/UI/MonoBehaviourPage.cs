@@ -26,6 +26,17 @@ namespace _Sculpture.Runtime.UI
             }
         }
 
+        public virtual void Reload(IReloadArguments arguments)
+        {
+            _openCts?.Cancel();
+            _openCts = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken);
+
+            foreach (MonoBehaviourPageElement element in _elements)
+            {
+                element.HandleReload(arguments);
+            }
+        }
+
         public virtual void Close(ICloseArguments arguments)
         {
             _openCts?.Cancel();

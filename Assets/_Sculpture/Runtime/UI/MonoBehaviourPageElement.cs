@@ -6,6 +6,8 @@ namespace _Sculpture.Runtime.UI
     {
         public virtual void HandleOpen(IOpenArguments arguments) { }
 
+        public virtual void HandleReload(IReloadArguments arguments) { }
+
         public virtual void HandleClose(ICloseArguments arguments) { }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _Sculpture.Runtime.Auth
 {
-    public enum LoginError
+    public enum SignInError
     {
         None,
         Unknown,

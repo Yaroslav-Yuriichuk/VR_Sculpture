@@ -18,12 +18,9 @@ namespace _Sculpture.Runtime.UI
         event Action<Enum, ICloseArguments> PageClosed;
 
         /// <summary>
-        /// Opens the specified page with the given arguments.
+        /// Checks if the specified page is open.
         /// </summary>
-        /// <typeparam name="TPageIdentifier">The type of the page, which must be an enumeration.</typeparam>
-        /// <param name="pageIdentifier">The page to open.</param>
-        /// <param name="arguments">Optional arguments for opening the page.</param>
-        void Open<TPageIdentifier>(TPageIdentifier pageIdentifier, IOpenArguments arguments = null) where TPageIdentifier : Enum;
+        bool IsOpen(Enum pageIdentifier);
 
         /// <summary>
         /// Opens the specified page with the given arguments.
@@ -33,12 +30,11 @@ namespace _Sculpture.Runtime.UI
         void Open(Enum pageIdentifier, IOpenArguments arguments = null);
 
         /// <summary>
-        /// Closes the specified page with the given arguments.
+        /// Reloads the specified page with the given arguments.
         /// </summary>
-        /// <typeparam name="TPageIdentifier">The type of the page, which must be an enumeration.</typeparam>
-        /// <param name="pageIdentifier">The page to close.</param>
-        /// <param name="arguments">Optional arguments for closing the page.</param>
-        void Close<TPageIdentifier>(TPageIdentifier pageIdentifier, ICloseArguments arguments = null) where TPageIdentifier : Enum;
+        /// <param name="pageIdentifier">The page to reload.</param>
+        /// <param name="arguments">Optional arguments for reloading the page.</param>
+        void Reload(Enum pageIdentifier, IReloadArguments arguments = null);
 
         /// <summary>
         /// Closes the specified page with the given arguments.
@@ -50,24 +46,9 @@ namespace _Sculpture.Runtime.UI
         /// <summary>
         /// Links a UI page to a specific page type.
         /// </summary>
-        /// <typeparam name="TPageIdentifier">The type of the page, which must be an enumeration.</typeparam>
-        /// <param name="page">The UI page to link.</param>
-        /// <param name="pageIdentifier">The page identifier to link to.</param>
-        void Link<TPageIdentifier>(IPage page, TPageIdentifier pageIdentifier) where TPageIdentifier : Enum;
-
-        /// <summary>
-        /// Links a UI page to a specific page type.
-        /// </summary>
         /// <param name="page">The UI page to link.</param>
         /// <param name="pageIdentifier">The page identifier to link to.</param>
         void Link(IPage page, Enum pageIdentifier);
-
-        /// <summary>
-        /// Unlinks a specific page type.
-        /// </summary>
-        /// <typeparam name="TPageIdentifier">The type of the page, which must be an enumeration.</typeparam>
-        /// <param name="pageIdentifier">The page identifier to unlink.</param>
-        void Unlink<TPageIdentifier>(TPageIdentifier pageIdentifier) where TPageIdentifier : Enum;
 
         /// <summary>
         /// Unlinks a specific page type.
