@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace _Sculpture.Runtime.Auth.Services
@@ -8,6 +9,26 @@ namespace _Sculpture.Runtime.Auth.Services
     /// </summary>
     public interface IAuthService
     {
+        /// <summary>
+        /// Event that is invoked when a user signs in.
+        /// </summary>
+        event Action<User> UserSignedIn;
+
+        /// <summary>
+        /// Event that is invoked when a user switches.
+        /// </summary>
+        event Action<User, User> UserSwitched;
+
+        /// <summary>
+        /// Event that is invoked when a user signs out.
+        /// </summary>
+        event Action<User> UserSignedOut;
+
+        /// <summary>
+        /// Gets the current user.
+        /// </summary>
+        User CurrentUser { get; }
+
         /// <summary>
         /// Registers a new user with the specified email and password.
         /// </summary>
@@ -27,8 +48,8 @@ namespace _Sculpture.Runtime.Auth.Services
         UniTask<SignInResult> SignInAsync(string email, string password, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Logs out the current user.
+        /// Sign out the current user.
         /// </summary>
-        void Logout();
+        void SignOut();
     }
 }

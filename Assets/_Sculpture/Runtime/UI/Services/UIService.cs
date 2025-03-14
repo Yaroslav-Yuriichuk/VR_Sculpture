@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace _Sculpture.Runtime.UI
+namespace _Sculpture.Runtime.UI.Services
 {
     public sealed class UIService : IUIService
     {

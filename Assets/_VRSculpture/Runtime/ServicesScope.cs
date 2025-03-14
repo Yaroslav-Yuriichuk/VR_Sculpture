@@ -1,5 +1,6 @@
 ﻿using _Sculpture.Runtime.Auth.Services;
 using _Sculpture.Runtime.UI;
+using _Sculpture.Runtime.UI.Services;
 using VContainer;
 using VContainer.Unity;
 
@@ -12,7 +13,7 @@ namespace _VRSculpture.Runtime
             base.Configure(builder);
 
             builder.Register<IUIService, UIService>(Lifetime.Singleton);
-            builder.Register<IAuthService, FireBaseAuthService>(Lifetime.Singleton);
+            builder.Register<IAuthService, FirebaseAuthService>(Lifetime.Singleton);
         }
     }
 }
