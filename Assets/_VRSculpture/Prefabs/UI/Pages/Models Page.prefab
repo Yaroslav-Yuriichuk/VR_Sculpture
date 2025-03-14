@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0024244108}
+  m_AnchoredPosition: {x: 0, y: -0.000016879465}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6421210730285867203
@@ -133,6 +133,8 @@ MonoBehaviour:
   _viewsParent: {fileID: 1531870010477521438}
   _createButton: {fileID: 2260796746393161146}
   _canvasGroup: {fileID: 1515193481012172001}
+  _predefinedModels:
+  - {fileID: 5020270461513550471, guid: c4e145ec04521d24f9b1bdd1f9e0c22c, type: 3}
 --- !u!1 &4878030549122925982
 GameObject:
   m_ObjectHideFlags: 0

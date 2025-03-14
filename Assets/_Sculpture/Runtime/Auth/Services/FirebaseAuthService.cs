@@ -1,13 +1,33 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Firebase;
 using Firebase.Auth;
 
 namespace _Sculpture.Runtime.Auth.Services
 {
-    public sealed class FireBaseAuthService : IAuthService
+    public sealed class FirebaseAuthService : IAuthService, IDisposable
     {
+        public event Action<User> UserSignedIn;
+        public event Action<User, User> UserSwitched;
+        public event Action<User> UserSignedOut;
+
+        public User CurrentUser => _currentUser;
+
         private FirebaseAuth Auth => FirebaseAuth.DefaultInstance;
+
+        private User _currentUser;
+
+        public FirebaseAuthService()
+        {
+            _currentUser = FireBaseUserUtility.ToUser(Auth.CurrentUser);
+            Auth.StateChanged += HandleAuthStateChanged;
+        }
+
+        public void Dispose()
+        {
+            Auth.StateChanged -= HandleAuthStateChanged;
+        }
 
         public async UniTask<SignUpResult> SignUpAsync(string email, string password, CancellationToken cancellationToken = default)
         {
@@ -22,7 +42,7 @@ namespace _Sculpture.Runtime.Auth.Services
                     return new SignUpResult(false, error: SignUpError.Unknown);
                 }
 
-                User user = new User(Auth.CurrentUser.UserId, Auth.CurrentUser.Email, password);
+                User user = FireBaseUserUtility.ToUser(Auth.CurrentUser);
                 SignUpResult result = new SignUpResult(true, user);
 
                 return result;
@@ -62,7 +82,7 @@ namespace _Sculpture.Runtime.Auth.Services
                     return new SignInResult(false, error: SignInError.Unknown);
                 }
 
-                User user = new User(Auth.CurrentUser.UserId, Auth.CurrentUser.Email, password);
+                User user = FireBaseUserUtility.ToUser(Auth.CurrentUser);
                 SignInResult result = new SignInResult(true, user);
 
                 return result;
@@ -83,9 +103,30 @@ namespace _Sculpture.Runtime.Auth.Services
             }
         }
 
-        public void Logout()
+        public void SignOut()
         {
             Auth.SignOut();
+        }
+
+        private void HandleAuthStateChanged(object sender, EventArgs e)
+        {
+            User previousUser = _currentUser;
+            User currentUser = FireBaseUserUtility.ToUser(Auth.CurrentUser);
+
+            _currentUser = currentUser;
+
+            if (currentUser == null && previousUser != null)
+            {
+                UserSignedOut?.Invoke(new User(previousUser.Id, previousUser.Email));
+            }
+            else if (currentUser != null && previousUser == null)
+            {
+                UserSignedIn?.Invoke(new User(currentUser.Id, currentUser.Email));
+            }
+            else if (currentUser != null && previousUser != null && currentUser.Id != previousUser.Id)
+            {
+                UserSwitched?.Invoke(new User(previousUser.Id, previousUser.Email), new User(currentUser.Id, currentUser.Email));
+            }
         }
     }
 }

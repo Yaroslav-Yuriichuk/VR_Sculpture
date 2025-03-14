@@ -22,6 +22,9 @@ namespace _VRSculpture.Runtime.UI.Pages
         [SerializeField] private Button _createButton;
         [SerializeField] private CanvasGroup _canvasGroup;
 
+        [Space]
+        [SerializeField] private TextAsset[] _predefinedModels;
+
         private readonly List<ModelView> _views = new();
 
         public override void Open(IOpenArguments arguments)
@@ -65,7 +68,8 @@ namespace _VRSculpture.Runtime.UI.Pages
                 return;
             }
 
-            ModelWriteResult result = await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, data.Path, Serialization.RawVoxelArt, cancellationToken);
+            WriteDestination destination = WriteDestination.File(data.Path);
+            ModelWriteResult result = await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, destination, Serialization.RawVoxelArt, cancellationToken);
 
             if (result.IsSuccessful)
             {
@@ -85,7 +89,8 @@ namespace _VRSculpture.Runtime.UI.Pages
                 return;
             }
 
-            ModelReadResult result = await VoxelArtSystems.Saving.ReadAsync(data.Path, Serialization.RawVoxelArt, cancellationToken);
+            ReadSource source = ReadSource.File(data.Path);
+            ModelReadResult result = await VoxelArtSystems.Saving.ReadAsync(source, Serialization.RawVoxelArt, cancellationToken);
 
             if (!result.IsSuccessful)
             {
@@ -106,7 +111,8 @@ namespace _VRSculpture.Runtime.UI.Pages
                 return;
             }
 
-            await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, data.Path, Serialization.RawVoxelArt, cancellationToken);
+            WriteDestination destination = WriteDestination.File(data.Path);
+            await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, destination, Serialization.RawVoxelArt, cancellationToken);
         }
 
         private async Task PerformAsync<T>(Func<T, CancellationToken, Task> callback, T arg, CancellationToken cancellationToken)

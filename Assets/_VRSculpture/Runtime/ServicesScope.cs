@@ -12,7 +12,7 @@ namespace _VRSculpture.Runtime
             base.Configure(builder);
 
             builder.Register<IUIService, UIService>(Lifetime.Singleton);
-            builder.Register<IAuthService, FireBaseAuthService>(Lifetime.Singleton);
+            builder.Register<IAuthService, FirebaseAuthService>(Lifetime.Singleton);
         }
     }
 }

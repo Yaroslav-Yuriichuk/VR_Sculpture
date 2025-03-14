@@ -4,13 +4,11 @@
     {
         public string Id { get; set; }
         public string Email { get; }
-        public string Password { get; }
 
-        public User(string id, string email, string password)
+        public User(string id, string email)
         {
             Id = id;
             Email = email;
-            Password = password;
         }
     }
 }
