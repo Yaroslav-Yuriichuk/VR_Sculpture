@@ -1,6 +1,6 @@
 using System;
 
-namespace _Sculpture.Runtime.UI
+namespace _Sculpture.Runtime.UI.Services
 {
     /// <summary>
     /// Interface for a UI service managing pages.
