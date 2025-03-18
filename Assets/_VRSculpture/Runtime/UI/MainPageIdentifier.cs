@@ -10,5 +10,6 @@ namespace _VRSculpture.Runtime.UI
         Subtraction,
         Addition,
         Models,
+        CreateModel,
     }
 }

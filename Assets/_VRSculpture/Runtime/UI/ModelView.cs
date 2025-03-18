@@ -1,54 +1,28 @@
-﻿using System;
-using Newtonsoft.Json;
-using TMPro;
+﻿using System.Threading;
+using _Sculpture.Runtime.Content;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _VRSculpture.Runtime.UI
 {
-    public sealed class ModelDataJson
+    internal abstract class ModelView : MonoBehaviour
     {
-        [JsonProperty]
-        public string Name { get; set; }
+        public ModelDescriptor Descriptor { get; private set; }
 
-        [JsonProperty]
-        public string Path { get; set; }
-    }
+        private CancellationTokenSource _activeCts;
 
-    internal sealed class ModelView : MonoBehaviour
-    {
-        [SerializeField] private TMP_Text _nameText;
+        protected CancellationToken ActiveCancellationToken => _activeCts?.Token ?? new CancellationToken(true);
 
-        [Space]
-        [SerializeField] private Button _loadButton;
-        [SerializeField] private Button _saveButton;
-
-        private ModelDataJson _data;
-        private Action<ModelDataJson> _loadCallback;
-        private Action<ModelDataJson> _saveCallback;
-
-        public void Initialize(ModelDataJson data, Action<ModelDataJson> loadCallback, Action<ModelDataJson> saveCallback)
+        public virtual void Initialize(ModelDescriptor descriptor)
         {
-            _data = data;
-            _loadCallback = loadCallback;
-            _saveCallback = saveCallback;
+            Descriptor = descriptor;
 
-            _nameText.text = _data.Name;
+            _activeCts?.Cancel();
+            _activeCts = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken);
         }
 
-        private void OnEnable()
+        public virtual void Uninitialize()
         {
-            _loadButton.onClick.AddListener(RequestLoad);
-            _saveButton.onClick.AddListener(RequestSave);
+            _activeCts?.Cancel();
         }
-
-        private void OnDisable()
-        {
-            _loadButton.onClick.RemoveListener(RequestLoad);
-            _saveButton.onClick.RemoveListener(RequestSave);
-        }
-
-        private void RequestLoad() => _loadCallback?.Invoke(_data);
-        private void RequestSave() => _saveCallback?.Invoke(_data);
     }
 }

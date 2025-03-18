@@ -6,5 +6,6 @@ namespace _VRSculpture.Runtime.UI
     internal enum HelperPageIdentifier
     {
         Keyboard,
+        MainLoader,
     }
 }

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elements: []
   _visibilityComponent: {fileID: 0}
-  _viewPrefab: {fileID: 134858122325537879, guid: 969c045075cc6ad4980f6b8ff23039b1,
+  _remoteModelViewPrefab: {fileID: 7927418076476059235, guid: 969c045075cc6ad4980f6b8ff23039b1,
     type: 3}
   _viewsParent: {fileID: 1531870010477521438}
   _createButton: {fileID: 2260796746393161146}
