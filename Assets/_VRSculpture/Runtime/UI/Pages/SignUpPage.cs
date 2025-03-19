@@ -2,7 +2,7 @@
 using _Sculpture.Runtime.Auth;
 using _Sculpture.Runtime.Auth.Services;
 using _Sculpture.Runtime.UI;
-using _Sculpture.Runtime.UI.Visual;
+using _Sculpture.Runtime.UI.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
@@ -17,25 +17,25 @@ namespace _VRSculpture.Runtime.UI.Pages
 
         [Space]
         [SerializeField] private Button _signUpButton;
-        [SerializeField] private CanvasGroup _canvasGroup;
 
         [Space]
         [SerializeField] private AuthResultVisual _successVisual;
         [SerializeField] private SignUpErrorVisual[] _errorVisuals;
 
         private IAuthService _authService;
+        private IUIService _uiService;
 
         [Inject]
-        private void Construct(IAuthService authService)
+        private void Construct(IAuthService authService, IUIService uiService)
         {
             _authService = authService;
+            _uiService = uiService;
         }
 
         public override void Open(IOpenArguments arguments)
         {
             base.Open(arguments);
 
-            _canvasGroup.interactable = true;
             _signUpButton.onClick.AddListener(SignUp);
 
             _successVisual.Hide(immediately: true);
@@ -49,14 +49,20 @@ namespace _VRSculpture.Runtime.UI.Pages
         public override void Close(ICloseArguments arguments)
         {
             base.Close(arguments);
+
             _signUpButton.onClick.RemoveListener(SignUp);
+
+            if (_uiService.IsOpen(HelperPageIdentifier.MainLoader))
+            {
+                _uiService.Close(HelperPageIdentifier.MainLoader);
+            }
         }
 
         private void SignUp() => SignUpAsync(OpenCancellationToken).Forget();
 
         private async UniTaskVoid SignUpAsync(CancellationToken cancellationToken)
         {
-            _canvasGroup.interactable = false;
+            _uiService.Open(HelperPageIdentifier.MainLoader);
 
             _successVisual.Hide(immediately: true);
 
@@ -93,7 +99,7 @@ namespace _VRSculpture.Runtime.UI.Pages
             }
             finally
             {
-                _canvasGroup.interactable = true;
+                _uiService.Close(HelperPageIdentifier.MainLoader);
             }
         }
     }

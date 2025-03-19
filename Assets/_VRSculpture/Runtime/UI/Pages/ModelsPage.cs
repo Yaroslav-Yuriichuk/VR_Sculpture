@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
+using _Sculpture.Runtime.Auth;
+using _Sculpture.Runtime.Auth.Services;
+using _Sculpture.Runtime.Content;
+using _Sculpture.Runtime.Content.Services;
 using _Sculpture.Runtime.UI;
-using Newtonsoft.Json;
+using _Sculpture.Runtime.UI.Services;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using VoxelArt.Runtime;
-using VoxelArt.Runtime.Saving;
+using VContainer;
 
 namespace _VRSculpture.Runtime.UI.Pages
 {
     internal sealed class ModelsPage : BasicPage
     {
         [Space]
-        [SerializeField] private ModelView _viewPrefab;
+        [SerializeField] private ModelView _remoteModelViewPrefab;
         [SerializeField] private Transform _viewsParent;
 
         [Space]
@@ -25,161 +27,118 @@ namespace _VRSculpture.Runtime.UI.Pages
         [Space]
         [SerializeField] private TextAsset[] _predefinedModels;
 
-        private readonly List<ModelView> _views = new();
+        private readonly Dictionary<string, ModelView> _views = new();
+
+        private IUIService _uiService;
+        private IContentService _contentService;
+        private IAuthService _authService;
+
+        [Inject]
+        private void Construct(IUIService uiService, IContentService contentService, IAuthService authService)
+        {
+            _uiService = uiService;
+            _contentService = contentService;
+            _authService = authService;
+        }
 
         public override void Open(IOpenArguments arguments)
         {
             base.Open(arguments);
 
-            List<ModelDataJson> models = LoadModels();
-            RecreateViews(models);
+            UniTask.Create(async () =>
+                {
+                    IEnumerable<ModelDescriptor> descriptors = await LoadModelsAsync(OpenCancellationToken);
+
+                    foreach (ModelDescriptor descriptor in descriptors)
+                    {
+                        AddView(descriptor);
+                    }
+                })
+                .Forget();
 
             _createButton.onClick.AddListener(CreateModel);
+
+            _authService.UserSignedOut += ClearViews;
+
+            _contentService.ModelAdded += AddView;
+            _contentService.ModelDeleted += RemoveView;
         }
 
         public override void Close(ICloseArguments arguments)
         {
             base.Close(arguments);
+
+            ClearViews();
+
             _createButton.onClick.RemoveListener(CreateModel);
-        }
 
-        private void CreateModel()
-        {
-            List<ModelDataJson> models = LoadModels();
-
-            ModelDataJson data = new ModelDataJson
+            if (_uiService.IsOpen(MainPageIdentifier.CreateModel))
             {
-                Name = $"Model {models.Count}",
-                Path = Path.Combine(Application.persistentDataPath, $"Model_{models.Count}.voxelart")
-            };
-
-            _ = PerformAsync(CreateModelAsync, data, OpenCancellationToken);
-        }
-
-        private void LoadModel(ModelDataJson data) => _ = PerformAsync(LoadModelAsync, data, OpenCancellationToken);
-
-        private void SaveModel(ModelDataJson data) => _ = PerformAsync(SaveModelAsync, data, OpenCancellationToken);
-
-        private async Task CreateModelAsync(ModelDataJson data, CancellationToken cancellationToken)
-        {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject) ||
-                modelObject.Model is null)
-            {
-                return;
+                _uiService.Close(MainPageIdentifier.CreateModel);
             }
 
-            WriteDestination destination = WriteDestination.File(data.Path);
-            ModelWriteResult result = await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, destination, Serialization.RawVoxelArt, cancellationToken);
-
-            if (result.IsSuccessful)
+            if (_uiService.IsOpen(HelperPageIdentifier.MainLoader))
             {
-                List<ModelDataJson> models = LoadModels();
-
-                models.Add(data);
-                RecreateViews(models);
-
-                SaveModels(models);
+                _uiService.Close(HelperPageIdentifier.MainLoader);
             }
+
+            _authService.UserSignedOut -= ClearViews;
+
+            _contentService.ModelAdded -= AddView;
+            _contentService.ModelDeleted -= RemoveView;
         }
 
-        private async Task LoadModelAsync(ModelDataJson data, CancellationToken cancellationToken)
-        {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject))
-            {
-                return;
-            }
+        private void CreateModel() => _uiService.Open(MainPageIdentifier.CreateModel);
 
-            ReadSource source = ReadSource.File(data.Path);
-            ModelReadResult result = await VoxelArtSystems.Saving.ReadAsync(source, Serialization.RawVoxelArt, cancellationToken);
+        private async UniTask<IEnumerable<ModelDescriptor>> LoadModelsAsync(CancellationToken cancellationToken)
+        {
+            ModelsGetResult result = await _contentService.GetModelsAsync(cancellationToken);
 
             if (!result.IsSuccessful)
             {
+                return Enumerable.Empty<ModelDescriptor>();
+            }
+
+            return result.Descriptors;
+        }
+
+        private void ClearViews(User currentUser) => ClearViews();
+
+        private void AddView(ModelDescriptor descriptor)
+        {
+            if (_views.ContainsKey(descriptor.Id))
+            {
                 return;
             }
 
-            ModelApplySettings settings = ModelApplySettings.FromModelObjectSettings();
-            settings.ReleasePreviousModel = true;
+            ModelView view = Instantiate(_remoteModelViewPrefab, _viewsParent);
+            view.Initialize(descriptor);
 
-            await VoxelArtSystems.Build.ApplyModelAsync(modelObject, result.Model, settings, cancellationToken);
+            _views.Add(descriptor.Id, view);
         }
 
-        private async Task SaveModelAsync(ModelDataJson data, CancellationToken cancellationToken)
+        private void RemoveView(ModelDescriptor descriptor)
         {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject) ||
-                modelObject.Model is null)
+            if (!_views.TryGetValue(descriptor.Id, out ModelView view))
             {
                 return;
             }
 
-            WriteDestination destination = WriteDestination.File(data.Path);
-            await VoxelArtSystems.Saving.WriteAsync(modelObject.Model, destination, Serialization.RawVoxelArt, cancellationToken);
+            view.Uninitialize();
+            Destroy(view.gameObject);
+
+            _views.Remove(descriptor.Id);
         }
 
-        private async Task PerformAsync<T>(Func<T, CancellationToken, Task> callback, T arg, CancellationToken cancellationToken)
+        private void ClearViews()
         {
-            _canvasGroup.interactable = false;
-
-            try
+            foreach (ModelView view in _views.Values)
             {
-                await callback(arg, cancellationToken);
-            }
-            finally
-            {
-                _canvasGroup.interactable = true;
-            }
-        }
-
-        private void RecreateViews(List<ModelDataJson> models)
-        {
-            foreach (ModelView view in _views)
-            {
+                view.Uninitialize();
                 Destroy(view.gameObject);
             }
 
             _views.Clear();
-
-            foreach (ModelDataJson model in models)
-            {
-                ModelView view = Instantiate(_viewPrefab, _viewsParent);
-                view.Initialize(model, LoadModel, SaveModel);
-
-                _views.Add(view);
-            }
-        }
-
-        private List<ModelDataJson> LoadModels()
-        {
-            string path = $"{Application.persistentDataPath}/Models.json";
-
-            if (!File.Exists(path))
-            {
-                return new List<ModelDataJson>();
-            }
-
-            try
-            {
-                string json = File.ReadAllText(path);
-                return JsonConvert.DeserializeObject<List<ModelDataJson>>(json);
-            }
-            catch (Exception)
-            {
-                return new List<ModelDataJson>();
-            }
-        }
-
-        private void SaveModels(List<ModelDataJson> models)
-        {
-            string path = $"{Application.persistentDataPath}/Models.json";
-
-            try
-            {
-                string json = JsonConvert.SerializeObject(models, Formatting.Indented);
-                File.WriteAllText(path, json);
-            }
-            catch (Exception)
-            {
-                // Ignored.
-            }
         }
     }
 }
