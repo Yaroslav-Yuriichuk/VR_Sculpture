@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using _Sculpture.Runtime.Content;
 using _Sculpture.Runtime.Content.Services;
 using _Sculpture.Runtime.UI.Services;
@@ -19,6 +18,7 @@ namespace _VRSculpture.Runtime.UI
         [Space]
         [SerializeField] private Button _loadButton;
         [SerializeField] private Button _saveButton;
+        [SerializeField] private Button _deleteButton;
 
         private IContentService _contentService;
         private IUIService _uiService;
@@ -38,6 +38,7 @@ namespace _VRSculpture.Runtime.UI
 
             _loadButton.onClick.AddListener(LoadModel);
             _saveButton.onClick.AddListener(SaveModel);
+            _deleteButton.onClick.AddListener(DeleteModel);
         }
 
         public override void Uninitialize()
@@ -46,6 +47,7 @@ namespace _VRSculpture.Runtime.UI
 
             _loadButton.onClick.RemoveListener(LoadModel);
             _saveButton.onClick.RemoveListener(SaveModel);
+            _deleteButton.onClick.RemoveListener(DeleteModel);
         }
 
         private void LoadModel() => LoadModelAsync(ActiveCancellationToken).Forget();
@@ -95,6 +97,22 @@ namespace _VRSculpture.Runtime.UI
             try
             {
                 await _contentService.UpdateModelAsync(Descriptor, modelObject.Model, cancellationToken);
+            }
+            finally
+            {
+                _uiService.Close(HelperPageIdentifier.MainLoader);
+            }
+        }
+
+        private void DeleteModel() => DeleteModelAsync(ActiveCancellationToken).Forget();
+
+        private async UniTask DeleteModelAsync(CancellationToken cancellationToken)
+        {
+            _uiService.Open(HelperPageIdentifier.MainLoader);
+
+            try
+            {
+                await _contentService.DeleteModelAsync(Descriptor, cancellationToken);
             }
             finally
             {

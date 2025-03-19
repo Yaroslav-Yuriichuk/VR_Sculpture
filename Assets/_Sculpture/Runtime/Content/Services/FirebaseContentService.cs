@@ -14,57 +14,15 @@ namespace _Sculpture.Runtime.Content.Services
         private readonly IAuthService _authService;
         private readonly IStorageService _storageService;
 
+        public event Action<ModelDescriptor> ModelAdded;
+        public event Action<ModelDescriptor> ModelDeleted;
+
         private DatabaseReference RootReference => FirebaseDatabase.DefaultInstance.RootReference;
 
         public FirebaseContentService(IAuthService authService, IStorageService storageService)
         {
             _authService = authService;
             _storageService = storageService;
-        }
-
-        public async UniTask<ModelAddResult> AddModelAsync(string name, Model model, CancellationToken cancellationToken = default)
-        {
-            if (_authService.CurrentUser == null)
-            {
-                return new ModelAddResult(false);
-            }
-
-            string userId = _authService.CurrentUser.Id;
-            DatabaseReference modelsReference = RootReference.Child("users").Child(userId).Child("models");
-
-            string modelId = modelsReference.Push().Key;
-
-            ModelDescriptor modelDescriptor = new ModelDescriptor
-            {
-                Id = modelId,
-                Name = name,
-            };
-
-            ModelAddResult storageAddResult = await _storageService.AddModelAsync(model, modelDescriptor, cancellationToken);
-
-            if (!storageAddResult.IsSuccessful)
-            {
-                return new ModelAddResult(false);
-            }
-
-            string modelDescriptorJson = JsonConvert.SerializeObject(modelDescriptor);
-
-            try
-            {
-                await modelsReference.Child(modelId).SetRawJsonValueAsync(modelDescriptorJson)
-                    .AsUniTask()
-                    .AttachExternalCancellation(cancellationToken);
-
-                return new ModelAddResult(true, modelDescriptor);
-            }
-            catch (OperationCanceledException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                return new ModelAddResult(false);
-            }
         }
 
         public async UniTask<ModelsGetResult> GetModelsAsync(CancellationToken cancellationToken = default)
@@ -129,6 +87,53 @@ namespace _Sculpture.Runtime.Content.Services
             }
         }
 
+        public async UniTask<ModelAddResult> AddModelAsync(string name, Model model, CancellationToken cancellationToken = default)
+        {
+            if (_authService.CurrentUser == null)
+            {
+                return new ModelAddResult(false);
+            }
+
+            string userId = _authService.CurrentUser.Id;
+            DatabaseReference modelsReference = RootReference.Child("users").Child(userId).Child("models");
+
+            string modelId = modelsReference.Push().Key;
+
+            ModelDescriptor modelDescriptor = new ModelDescriptor
+            {
+                Id = modelId,
+                Name = name,
+            };
+
+            ModelAddResult storageAddResult = await _storageService.AddModelAsync(model, modelDescriptor, cancellationToken);
+
+            if (!storageAddResult.IsSuccessful)
+            {
+                return new ModelAddResult(false);
+            }
+
+            string modelDescriptorJson = JsonConvert.SerializeObject(modelDescriptor);
+
+            try
+            {
+                await modelsReference.Child(modelId).SetRawJsonValueAsync(modelDescriptorJson)
+                    .AsUniTask()
+                    .AttachExternalCancellation(cancellationToken);
+
+                ModelAdded?.Invoke(modelDescriptor);
+
+                return new ModelAddResult(true, modelDescriptor);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                return new ModelAddResult(false);
+            }
+        }
+
         public async UniTask<ModelUpdateResult> UpdateModelAsync(ModelDescriptor descriptor, Model model, CancellationToken cancellationToken = default)
         {
             if (_authService.CurrentUser == null)
@@ -144,6 +149,43 @@ namespace _Sculpture.Runtime.Content.Services
             }
 
             return new ModelUpdateResult(true, descriptor);
+        }
+
+        public async UniTask<ModelDeleteResult> DeleteModelAsync(ModelDescriptor descriptor, CancellationToken cancellationToken = default)
+        {
+            if (_authService.CurrentUser == null)
+            {
+                return new ModelDeleteResult(false);
+            }
+
+            string userId = _authService.CurrentUser.Id;
+            DatabaseReference modelReference = RootReference.Child("users").Child(userId).Child("models").Child(descriptor.Id);
+
+            try
+            {
+                await modelReference.RemoveValueAsync()
+                    .AsUniTask()
+                    .AttachExternalCancellation(cancellationToken);
+
+                ModelDeleteResult storageDeleteResult = await _storageService.DeleteModelAsync(descriptor, cancellationToken);
+
+                if (!storageDeleteResult.IsSuccessful)
+                {
+                    return new ModelDeleteResult(false);
+                }
+
+                ModelDeleted?.Invoke(descriptor);
+
+                return new ModelDeleteResult(true);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                return new ModelDeleteResult(false);
+            }
         }
     }
 }

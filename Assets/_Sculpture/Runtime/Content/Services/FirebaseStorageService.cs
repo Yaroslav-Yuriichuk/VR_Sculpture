@@ -123,5 +123,33 @@ namespace _Sculpture.Runtime.Content.Services
                 return new ModelUpdateResult(false);
             }
         }
+
+        public async UniTask<ModelDeleteResult> DeleteModelAsync(ModelDescriptor descriptor, CancellationToken cancellationToken = default)
+        {
+            if (_authService.CurrentUser == null)
+            {
+                return new ModelDeleteResult(false);
+            }
+
+            string userId = _authService.CurrentUser.Id;
+            StorageReference storageReference = Storage.GetReference($"users/{userId}/models/{descriptor.Id}.voxelart");
+
+            try
+            {
+                await storageReference.DeleteAsync()
+                    .AsUniTask()
+                    .AttachExternalCancellation(cancellationToken);
+
+                return new ModelDeleteResult(true);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch
+            {
+                return new ModelDeleteResult(false);
+            }
+        }
     }
 }

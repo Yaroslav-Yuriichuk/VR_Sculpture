@@ -6,10 +6,12 @@ namespace _Sculpture.Runtime.Content.Services
 {
     public interface IStorageService
     {
-        UniTask<ModelAddResult> AddModelAsync(Model model, ModelDescriptor descriptor, CancellationToken cancellationToken = default);
-
         UniTask<ModelGetResult> GetModelAsync(ModelDescriptor descriptor, CancellationToken cancellationToken = default);
 
+        UniTask<ModelAddResult> AddModelAsync(Model model, ModelDescriptor descriptor, CancellationToken cancellationToken = default);
+
         UniTask<ModelUpdateResult> UpdateModelAsync(Model model, ModelDescriptor descriptor, CancellationToken cancellationToken = default);
+
+        UniTask<ModelDeleteResult> DeleteModelAsync(ModelDescriptor descriptor, CancellationToken cancellationToken = default);
     }
 }

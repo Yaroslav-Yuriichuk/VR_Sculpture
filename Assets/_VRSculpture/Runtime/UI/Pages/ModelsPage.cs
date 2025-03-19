@@ -59,6 +59,9 @@ namespace _VRSculpture.Runtime.UI.Pages
             _createButton.onClick.AddListener(CreateModel);
 
             _authService.UserSignedOut += ClearViews;
+
+            _contentService.ModelAdded += AddView;
+            _contentService.ModelDeleted += RemoveView;
         }
 
         public override void Close(ICloseArguments arguments)
@@ -80,6 +83,9 @@ namespace _VRSculpture.Runtime.UI.Pages
             }
 
             _authService.UserSignedOut -= ClearViews;
+
+            _contentService.ModelAdded -= AddView;
+            _contentService.ModelDeleted -= RemoveView;
         }
 
         private void CreateModel() => _uiService.Open(MainPageIdentifier.CreateModel);
