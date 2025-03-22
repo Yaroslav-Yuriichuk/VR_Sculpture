@@ -2,9 +2,9 @@
 using Cysharp.Threading.Tasks;
 using VoxelArt.Runtime;
 
-namespace _Sculpture.Runtime.Content.Services
+namespace _Sculpture.Runtime.Content.Remote.Services
 {
-    public interface IStorageService
+    public interface IRemoteStorageService
     {
         UniTask<ModelGetResult> GetModelAsync(ModelDescriptor descriptor, CancellationToken cancellationToken = default);
 

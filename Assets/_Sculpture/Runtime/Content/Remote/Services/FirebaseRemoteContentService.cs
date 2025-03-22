@@ -7,22 +7,22 @@ using Firebase.Database;
 using Newtonsoft.Json;
 using VoxelArt.Runtime;
 
-namespace _Sculpture.Runtime.Content.Services
+namespace _Sculpture.Runtime.Content.Remote.Services
 {
-    public sealed class FirebaseContentService : IContentService
+    public sealed class FirebaseRemoteContentService : IRemoteContentService
     {
         private readonly IAuthService _authService;
-        private readonly IStorageService _storageService;
+        private readonly IRemoteStorageService _remoteStorageService;
 
         public event Action<ModelDescriptor> ModelAdded;
         public event Action<ModelDescriptor> ModelDeleted;
 
         private DatabaseReference RootReference => FirebaseDatabase.DefaultInstance.RootReference;
 
-        public FirebaseContentService(IAuthService authService, IStorageService storageService)
+        public FirebaseRemoteContentService(IAuthService authService, IRemoteStorageService remoteStorageService)
         {
             _authService = authService;
-            _storageService = storageService;
+            _remoteStorageService = remoteStorageService;
         }
 
         public async UniTask<ModelsGetResult> GetModelsAsync(CancellationToken cancellationToken = default)
@@ -68,7 +68,7 @@ namespace _Sculpture.Runtime.Content.Services
 
             try
             {
-                ModelGetResult storageGetResult = await _storageService.GetModelAsync(descriptor, cancellationToken);
+                ModelGetResult storageGetResult = await _remoteStorageService.GetModelAsync(descriptor, cancellationToken);
 
                 if (!storageGetResult.IsSuccessful)
                 {
@@ -105,7 +105,7 @@ namespace _Sculpture.Runtime.Content.Services
                 Name = name,
             };
 
-            ModelAddResult storageAddResult = await _storageService.AddModelAsync(model, modelDescriptor, cancellationToken);
+            ModelAddResult storageAddResult = await _remoteStorageService.AddModelAsync(model, modelDescriptor, cancellationToken);
 
             if (!storageAddResult.IsSuccessful)
             {
@@ -141,7 +141,7 @@ namespace _Sculpture.Runtime.Content.Services
                 return new ModelUpdateResult(false);
             }
 
-            ModelUpdateResult storageUpdateResult = await _storageService.UpdateModelAsync(model, descriptor, cancellationToken);
+            ModelUpdateResult storageUpdateResult = await _remoteStorageService.UpdateModelAsync(model, descriptor, cancellationToken);
 
             if (!storageUpdateResult.IsSuccessful)
             {
@@ -167,7 +167,7 @@ namespace _Sculpture.Runtime.Content.Services
                     .AsUniTask()
                     .AttachExternalCancellation(cancellationToken);
 
-                ModelDeleteResult storageDeleteResult = await _storageService.DeleteModelAsync(descriptor, cancellationToken);
+                ModelDeleteResult storageDeleteResult = await _remoteStorageService.DeleteModelAsync(descriptor, cancellationToken);
 
                 if (!storageDeleteResult.IsSuccessful)
                 {

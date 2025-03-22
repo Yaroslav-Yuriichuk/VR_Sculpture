@@ -1,5 +1,5 @@
 ﻿using System.Threading;
-using _Sculpture.Runtime.Content.Services;
+using _Sculpture.Runtime.Content.Remote.Services;
 using _Sculpture.Runtime.UI;
 using _Sculpture.Runtime.UI.Services;
 using Cysharp.Threading.Tasks;
@@ -20,13 +20,13 @@ namespace _VRSculpture.Runtime.UI.Pages
         [SerializeField] private Button _closeButton;
 
         private IUIService _uiService;
-        private IContentService _contentService;
+        private IRemoteContentService _remoteContentService;
 
         [Inject]
-        private void Construct(IUIService uiService, IContentService contentService)
+        private void Construct(IUIService uiService, IRemoteContentService remoteContentService)
         {
             _uiService = uiService;
-            _contentService = contentService;
+            _remoteContentService = remoteContentService;
         }
 
         public override void Open(IOpenArguments arguments)
@@ -71,7 +71,7 @@ namespace _VRSculpture.Runtime.UI.Pages
 
             try
             {
-                await _contentService.AddModelAsync(_nameForm.Name, modelObject.Model, cancellationToken);
+                await _remoteContentService.AddModelAsync(_nameForm.Name, modelObject.Model, cancellationToken);
                 _uiService.Close(MainPageIdentifier.CreateModel);
             }
             finally

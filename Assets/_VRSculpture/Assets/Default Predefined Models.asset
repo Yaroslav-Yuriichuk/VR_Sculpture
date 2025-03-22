@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92fac5a89869430ab72b205378e79aa0, type: 3}
+  m_Name: Default Predefined Models
+  m_EditorClassIdentifier: 
+  _models:
+  - <Id>k__BackingField: _DefaultPredefinedModelVRModel
+    <Name>k__BackingField: VR Model
+    <Asset>k__BackingField: {fileID: 5020270461513550471, guid: c4e145ec04521d24f9b1bdd1f9e0c22c,
+      type: 3}

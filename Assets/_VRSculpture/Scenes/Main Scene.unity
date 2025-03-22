@@ -5005,6 +5005,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _defaultModels: {fileID: 11400000, guid: fa80013af2953a541800bc170c0587b6, type: 2}
 --- !u!4 &1316612950
 Transform:
   m_ObjectHideFlags: 0
