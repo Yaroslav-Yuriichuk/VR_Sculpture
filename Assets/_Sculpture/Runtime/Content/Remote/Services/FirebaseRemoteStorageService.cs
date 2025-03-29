@@ -6,15 +6,15 @@ using Firebase.Storage;
 using VoxelArt.Runtime;
 using VoxelArt.Runtime.Serialization;
 
-namespace _Sculpture.Runtime.Content.Services
+namespace _Sculpture.Runtime.Content.Remote.Services
 {
-    public sealed class FirebaseStorageService : IStorageService
+    public sealed class FirebaseRemoteStorageService : IRemoteStorageService
     {
         private readonly IAuthService _authService;
 
         private FirebaseStorage Storage => FirebaseStorage.DefaultInstance;
 
-        public FirebaseStorageService(IAuthService authService)
+        public FirebaseRemoteStorageService(IAuthService authService)
         {
             _authService = authService;
         }

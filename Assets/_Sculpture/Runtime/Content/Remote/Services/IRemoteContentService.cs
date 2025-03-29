@@ -3,9 +3,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using VoxelArt.Runtime;
 
-namespace _Sculpture.Runtime.Content.Services
+namespace _Sculpture.Runtime.Content.Remote.Services
 {
-    public interface IContentService
+    public interface IRemoteContentService
     {
         event Action<ModelDescriptor> ModelAdded;
 

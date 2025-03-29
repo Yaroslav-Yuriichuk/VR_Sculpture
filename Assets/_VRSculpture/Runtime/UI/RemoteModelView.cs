@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using _Sculpture.Runtime.Content;
-using _Sculpture.Runtime.Content.Services;
+using _Sculpture.Runtime.Content.Remote.Services;
 using _Sculpture.Runtime.UI.Services;
 using Cysharp.Threading.Tasks;
 using TMPro;
@@ -13,6 +13,7 @@ namespace _VRSculpture.Runtime.UI
 {
     internal sealed class RemoteModelView : ModelView
     {
+        [Space]
         [SerializeField] private TMP_Text _nameText;
 
         [Space]
@@ -20,13 +21,13 @@ namespace _VRSculpture.Runtime.UI
         [SerializeField] private Button _saveButton;
         [SerializeField] private Button _deleteButton;
 
-        private IContentService _contentService;
+        private IRemoteContentService _remoteContentService;
         private IUIService _uiService;
 
         [Inject]
-        private void Construct(IContentService contentService, IUIService uiService)
+        private void Construct(IRemoteContentService remoteContentService, IUIService uiService)
         {
-            _contentService = contentService;
+            _remoteContentService = remoteContentService;
             _uiService = uiService;
         }
 
@@ -63,7 +64,7 @@ namespace _VRSculpture.Runtime.UI
 
             try
             {
-                ModelGetResult modelGetResult = await _contentService.GetModelAsync(Descriptor, cancellationToken);
+                ModelGetResult modelGetResult = await _remoteContentService.GetModelAsync(Descriptor, cancellationToken);
 
                 if (!modelGetResult.IsSuccessful)
                 {
@@ -73,8 +74,7 @@ namespace _VRSculpture.Runtime.UI
                 ModelApplySettings settings = ModelApplySettings.FromModelObjectSettings();
                 settings.ReleasePreviousModel = true;
 
-                await VoxelArtSystems.Build.ApplyModelAsync(modelObject, modelGetResult.Model, settings,
-                    cancellationToken);
+                await VoxelArtSystems.Build.ApplyModelAsync(modelObject, modelGetResult.Model, settings, cancellationToken);
             }
             finally
             {
@@ -96,7 +96,7 @@ namespace _VRSculpture.Runtime.UI
 
             try
             {
-                await _contentService.UpdateModelAsync(Descriptor, modelObject.Model, cancellationToken);
+                await _remoteContentService.UpdateModelAsync(Descriptor, modelObject.Model, cancellationToken);
             }
             finally
             {
@@ -112,7 +112,7 @@ namespace _VRSculpture.Runtime.UI
 
             try
             {
-                await _contentService.DeleteModelAsync(Descriptor, cancellationToken);
+                await _remoteContentService.DeleteModelAsync(Descriptor, cancellationToken);
             }
             finally
             {

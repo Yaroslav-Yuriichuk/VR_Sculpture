@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Models Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Models Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: cba9f0e11c8c1104185523bd7e1439be
+  m_SerializeEntries:
+  - m_GUID: 15470c7c370748c4c828c99cc53de950
+    m_Address: Assets/_VRSculpture/Assets/Predefined Models.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee534a548814957488358a20d612b3e2
+    m_Address: Assets/_VRSculpture/Content/Models/Predefined/VRModel_Predefined.voxelart
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2e190c7150a3c8f41a60add5fc28c67f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 82883cc4fe2577443a55b480bc844457, type: 2}
+    - {fileID: 11400000, guid: e96fc17c5097f014d86dd431c9ad14c7, type: 2}

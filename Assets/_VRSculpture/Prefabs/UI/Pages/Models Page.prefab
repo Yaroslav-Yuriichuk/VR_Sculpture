@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1531870010477521438}
   - component: {fileID: 6421210730285867203}
   - component: {fileID: 3598465721859882391}
+  - component: {fileID: 8033551915605342337}
+  - component: {fileID: 7995748466986374728}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -77,6 +79,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &8033551915605342337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366913854700690054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042d3ec6c95f4fe0819be5c22190b582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewPrefab: {fileID: 7927418076476059235, guid: 969c045075cc6ad4980f6b8ff23039b1,
+    type: 3}
+  _viewsParent: {fileID: 1531870010477521438}
+--- !u!114 &7995748466986374728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366913854700690054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cb0c6b0ec24e70a2fd00a025d8308b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewPrefab: {fileID: 2118849324316142098, guid: f6afa4f3542e7b147bd0e8ebfa46c6ca,
+    type: 3}
+  _viewsParent: {fileID: 1531870010477521438}
 --- !u!1 &2967780040661581348
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,15 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a246fc72af764c0ebbbf38d20a3cd9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elements: []
+  _elements:
+  - {fileID: 8033551915605342337}
+  - {fileID: 7995748466986374728}
   _visibilityComponent: {fileID: 0}
-  _remoteModelViewPrefab: {fileID: 7927418076476059235, guid: 969c045075cc6ad4980f6b8ff23039b1,
-    type: 3}
-  _viewsParent: {fileID: 1531870010477521438}
   _createButton: {fileID: 2260796746393161146}
-  _canvasGroup: {fileID: 1515193481012172001}
-  _predefinedModels:
-  - {fileID: 5020270461513550471, guid: c4e145ec04521d24f9b1bdd1f9e0c22c, type: 3}
 --- !u!1 &4878030549122925982
 GameObject:
   m_ObjectHideFlags: 0
