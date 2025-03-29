@@ -5005,6 +5005,11 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _predefinedModelsReference:
+    m_AssetGUID: 15470c7c370748c4c828c99cc53de950
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _defaultModels: {fileID: 11400000, guid: fa80013af2953a541800bc170c0587b6, type: 2}
 --- !u!4 &1316612950
 Transform:

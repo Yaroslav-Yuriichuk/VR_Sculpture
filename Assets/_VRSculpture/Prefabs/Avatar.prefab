@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 4684642696867257397, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
       propertyPath: m_Name
-      value: CyborgAvatar_BRP Variant
+      value: Avatar
       objectReference: {fileID: 0}
     - target: {fileID: 5284662379483396610, guid: d12ff67997e4a1547890dc7efeb1b11c,
         type: 3}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraElevateHeight: 1.75
   _moveSpeed: {x: 2, y: 2}
-  _headRotationSpeed: {x: 0.1, y: 0.1}
+  _headRotationSpeed: {x: 0.04, y: 0.04}
   _headVerticalAngleLimit: {x: -70, y: 70}
   _leftHandCameraOffset: {x: -0.2, y: -0.18, z: 0.47}
   _rightHandCameraOffset: {x: 0.2, y: -0.18, z: 0.47}

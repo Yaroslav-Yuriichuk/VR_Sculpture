@@ -12,7 +12,8 @@ namespace _VRSculpture.Runtime
     internal sealed class ServicesScope : LifetimeScope
     {
         [Space]
-        [SerializeField] private PredefinedModelsAsset _defaultModels;
+        [SerializeField] private PredefinedModelsAssetReference _predefinedModelsReference;
+        [SerializeField] private DefaultModelsAsset _defaultModels;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -22,7 +23,9 @@ namespace _VRSculpture.Runtime
             builder.Register<IAuthService, FirebaseAuthService>(Lifetime.Singleton);
             builder.Register<IRemoteContentService, FirebaseRemoteContentService>(Lifetime.Singleton);
             builder.Register<IRemoteStorageService, FirebaseRemoteStorageService>(Lifetime.Singleton);
-            builder.Register<IPredefinedContentService, AddressablesPredefinedContentService>(Lifetime.Singleton).WithParameter(_defaultModels);
+            builder.Register<IPredefinedContentService, AddressablesPredefinedContentService>(Lifetime.Singleton)
+                .WithParameter(_predefinedModelsReference)
+                .WithParameter(_defaultModels);
         }
     }
 }

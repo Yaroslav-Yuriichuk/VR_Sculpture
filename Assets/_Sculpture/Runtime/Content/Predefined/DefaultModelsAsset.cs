@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace _Sculpture.Runtime.Content.Predefined
 {
-    [CreateAssetMenu(fileName = "Predefined Models", menuName = "Sculpture/Predefined Models")]
-    public sealed class PredefinedModelsAsset : ScriptableObject
+    [CreateAssetMenu(fileName = "Default Models", menuName = "Sculpture/Default Models")]
+    public sealed class DefaultModelsAsset : ScriptableObject
     {
         [Serializable]
         private sealed class ModelData
         {
             [field: SerializeField] public string Id { get; private set; }
             [field: SerializeField] public string Name { get; private set; }
-            [field: SerializeField] public TextAssetReference AssetReference { get; private set; }
+            [field: SerializeField] public TextAsset Asset { get; private set; }
         }
 
         [SerializeField] private ModelData[] _models;
@@ -31,7 +31,7 @@ namespace _Sculpture.Runtime.Content.Predefined
             }
         }
 
-        internal TextAssetReference GetAssetReference(ModelDescriptor descriptor)
+        internal TextAsset GetAsset(ModelDescriptor descriptor)
         {
             if (_models is null)
             {
@@ -39,7 +39,7 @@ namespace _Sculpture.Runtime.Content.Predefined
             }
 
             ModelData data = _models.FirstOrDefault(d => d.Id == descriptor.Id);
-            return data?.AssetReference;
+            return data?.Asset;
         }
     }
 }
