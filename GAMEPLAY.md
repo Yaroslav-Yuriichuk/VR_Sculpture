@@ -7,6 +7,8 @@ using controls on both hands:
 
 Sculptures can be saved between session on the cloud and loaded/updated later.
 
+https://github.com/user-attachments/assets/3eb57891-dd4d-42d9-abbb-ab95cb3aa061
+
 ## Controls
 
 When running the application you should be able to move around the room using teleports that are controlled by the
