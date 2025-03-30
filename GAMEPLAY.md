@@ -5,7 +5,7 @@ using controls on both hands:
 - Right hand for intrusion
 - Left hand for extrusion
 
-Sculptures can be saved between session using.
+Sculptures can be saved between session on the cloud and loaded/updated later.
 
 ## Controls
 
@@ -20,13 +20,19 @@ hand control should intersect with the sculpture and trigger on the left control
 
 ## UI
 
-There are three UI panels that are used to configure controls and sculptures.
+There are a few UI panels that are used to configure controls and sculptures.
 
+- **Sign up panel**. This panel is used to sign up the user. It requires email and password. Newly created user is
+automatically signed in.
+- **Sign in panel**. This panel is used to sign in the user. It requires email and password.
 - **Subtraction panel**. This panel allows configuring control for intruding the sculpture. Shape of the subtraction can
 be selected from the dropdown. To configure each shape there are individual sliders for each dimension.
 - **Addition panel**. This panel allows configuring control for extruding the sculpture. Shape of the addition can
 be selected from the dropdown. To configure each shape there are individual sliders for each dimension.
-- Models panel. This panel allows saving sculptures between sessions. Button in the right-bottom corner saves new model
-from currently applied to the sculpture. All sculptures and stored in the list. There are two buttons on each item:
-    - **Load button**. Applied selected model to the sculpture in the scene.
-    - **Save button**. Overrides saved model with the model currently applied to the sculpture.
+- **Models panel**. Internally this panel loads two types of models: pre-made models and user models. Pre-made models are
+loaded from the cloud and can be used as a base for the sculpture, they are read-only. User models are loaded from the cloud
+and can be overwritten by the user. User models are saved only for authenticated users. Page also allows creating new model
+from current sculpture and saving it to the cloud.
+
+In addition to the panels there is also a header that shows current user and allows to sign out.
+
