@@ -6,7 +6,7 @@ using VoxelArt.Runtime;
 using VoxelArt.Runtime.Modification;
 using VoxelArt.Runtime.Modification.Components;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Modification
 {
     [RequireComponent(typeof(TMP_Dropdown))]
     internal sealed class ShapeDropdown : MonoBehaviourPageElement

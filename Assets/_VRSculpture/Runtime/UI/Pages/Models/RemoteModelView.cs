@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using VContainer;
 using VoxelArt.Runtime;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal sealed class RemoteModelView : ModelView
     {

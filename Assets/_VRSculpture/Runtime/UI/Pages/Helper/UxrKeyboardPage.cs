@@ -3,7 +3,7 @@ using _Sculpture.Runtime.UI;
 using UltimateXR.UI.Helpers.Keyboard;
 using UnityEngine;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Helper
 {
     internal sealed class UxrKeyboardPage : BasicPage<KeyboardArguments, KeyboardArguments>
     {

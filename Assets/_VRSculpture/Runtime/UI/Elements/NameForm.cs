@@ -1,10 +1,12 @@
 ﻿using _Sculpture.Runtime.UI;
 using _Sculpture.Runtime.UI.Services;
+using _VRSculpture.Runtime.UI.Pages;
+using _VRSculpture.Runtime.UI.Pages.Helper;
 using TMPro;
 using UnityEngine;
 using VContainer;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Elements
 {
     internal sealed class NameForm : MonoBehaviourPageElement
     {

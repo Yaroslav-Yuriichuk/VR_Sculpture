@@ -1,7 +1,7 @@
 ﻿using _Sculpture.Runtime.Auth;
 using UnityEngine;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Auth
 {
     internal sealed class SignInErrorVisual : AuthResultVisual
     {

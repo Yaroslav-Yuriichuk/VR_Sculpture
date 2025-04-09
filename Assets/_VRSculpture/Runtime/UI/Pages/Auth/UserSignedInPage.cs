@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Auth
 {
     internal sealed class UserSignedInPage : BasicPage
     {

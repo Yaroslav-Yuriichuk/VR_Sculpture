@@ -2,13 +2,14 @@
 using _Sculpture.Runtime.Content.Remote.Services;
 using _Sculpture.Runtime.UI;
 using _Sculpture.Runtime.UI.Services;
+using _VRSculpture.Runtime.UI.Elements;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 using VoxelArt.Runtime;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal sealed class CreateModelPage : BasicPage
     {

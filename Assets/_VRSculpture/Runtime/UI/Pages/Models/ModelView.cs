@@ -2,7 +2,7 @@
 using _Sculpture.Runtime.Content;
 using UnityEngine;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal abstract class ModelView : MonoBehaviour
     {

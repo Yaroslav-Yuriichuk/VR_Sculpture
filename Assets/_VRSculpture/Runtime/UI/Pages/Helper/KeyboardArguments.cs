@@ -1,7 +1,7 @@
 ﻿using System;
 using _Sculpture.Runtime.UI;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Helper
 {
     internal sealed class KeyboardArguments : IOpenArguments, IReloadArguments
     {

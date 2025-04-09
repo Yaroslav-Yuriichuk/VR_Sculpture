@@ -3,12 +3,13 @@ using _Sculpture.Runtime.Auth;
 using _Sculpture.Runtime.Auth.Services;
 using _Sculpture.Runtime.UI;
 using _Sculpture.Runtime.UI.Services;
+using _VRSculpture.Runtime.UI.Elements;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Auth
 {
     internal sealed class SignInPage : BasicPage
     {

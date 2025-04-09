@@ -3,7 +3,7 @@ using _Sculpture.Runtime.UI.Visual;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Auth
 {
     internal class AuthResultVisual : MonoBehaviourPageElement
     {

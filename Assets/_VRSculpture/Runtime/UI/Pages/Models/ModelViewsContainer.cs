@@ -3,7 +3,7 @@ using _Sculpture.Runtime.Content;
 using _Sculpture.Runtime.UI;
 using UnityEngine;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal class ModelViewsContainer : MonoBehaviourPageElement
     {

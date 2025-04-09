@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal sealed class ModelsPage : BasicPage
     {

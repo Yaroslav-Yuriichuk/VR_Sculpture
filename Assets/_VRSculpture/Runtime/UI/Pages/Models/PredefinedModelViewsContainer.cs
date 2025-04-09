@@ -7,7 +7,7 @@ using _Sculpture.Runtime.UI;
 using Cysharp.Threading.Tasks;
 using VContainer;
 
-namespace _VRSculpture.Runtime.UI
+namespace _VRSculpture.Runtime.UI.Pages.Models
 {
     internal sealed class PredefinedModelViewsContainer : ModelViewsContainer
     {

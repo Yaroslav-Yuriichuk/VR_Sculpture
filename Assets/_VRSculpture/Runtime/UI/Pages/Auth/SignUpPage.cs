@@ -3,12 +3,13 @@ using _Sculpture.Runtime.Auth;
 using _Sculpture.Runtime.Auth.Services;
 using _Sculpture.Runtime.UI;
 using _Sculpture.Runtime.UI.Services;
+using _VRSculpture.Runtime.UI.Elements;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 using Button = UnityEngine.UI.Button;
 
-namespace _VRSculpture.Runtime.UI.Pages
+namespace _VRSculpture.Runtime.UI.Pages.Auth
 {
     internal sealed class SignUpPage : BasicPage
     {

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _links:
   - <PageIdentifierData>k__BackingField:
-      <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.HelperPageIdentifier
+      <EnumTypeName>k__BackingField: _VRSculpture.Runtime.UI.Pages.HelperPageIdentifier
       <EnumAssemblyName>k__BackingField: _VRSculpture.Runtime, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       <EnumValueName>k__BackingField: Keyboard
