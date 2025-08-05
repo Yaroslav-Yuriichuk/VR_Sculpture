@@ -55,7 +55,7 @@ namespace _VRSculpture.Runtime.UI.Pages.Models
 
         private async UniTask LoadModelAsync(CancellationToken cancellationToken)
         {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject))
+            if (!VoxelArtSystems.Components.TryGetModelObject(ModelObject.Any, out ModelObject modelObject))
             {
                 return;
             }
@@ -71,7 +71,7 @@ namespace _VRSculpture.Runtime.UI.Pages.Models
                     return;
                 }
 
-                ModelApplySettings settings = ModelApplySettings.FromModelObjectSettings();
+                ModelObjectApplySettings settings = ModelObjectApplySettings.FromModelObjectSettings();
                 settings.ReleasePreviousModel = true;
 
                 await VoxelArtSystems.Build.ApplyModelAsync(modelObject, modelGetResult.Model, settings, cancellationToken);
@@ -86,7 +86,7 @@ namespace _VRSculpture.Runtime.UI.Pages.Models
 
         private async UniTask SaveModelAsync(CancellationToken cancellationToken)
         {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject) ||
+            if (!VoxelArtSystems.Components.TryGetModelObject(ModelObject.Any, out ModelObject modelObject) ||
                 modelObject.Model is null)
             {
                 return;
