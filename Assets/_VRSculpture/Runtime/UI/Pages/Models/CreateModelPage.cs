@@ -57,7 +57,7 @@ namespace _VRSculpture.Runtime.UI.Pages.Models
 
         private async UniTask CreateModelAsync(CancellationToken cancellationToken)
         {
-            if (!VoxelArtSystems.Components.TryGetModelObject(_ => true, out ModelObject modelObject) ||
+            if (!VoxelArtSystems.Components.TryGetModelObject(ModelObject.Any, out ModelObject modelObject) ||
                 modelObject.Model is null)
             {
                 return;

@@ -85,6 +85,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7272075090165718863, guid: f0a1827def81a90449f11b62bef72f16,
         type: 3}
+      propertyPath: <ApplyChunksExecution>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272075090165718863, guid: f0a1827def81a90449f11b62bef72f16,
+        type: 3}
+      propertyPath: <BuildChunksBatchSize>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272075090165718863, guid: f0a1827def81a90449f11b62bef72f16,
+        type: 3}
+      propertyPath: <BuildChunksExecution>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272075090165718863, guid: f0a1827def81a90449f11b62bef72f16,
+        type: 3}
+      propertyPath: <ApplyChunksAsynchronously>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272075090165718863, guid: f0a1827def81a90449f11b62bef72f16,
+        type: 3}
       propertyPath: <ModelSize>k__BackingField.<X>k__BackingField
       value: 1
       objectReference: {fileID: 0}
